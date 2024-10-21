@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>피드백 목록</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 네비게이션 바 -->
+<nav th:fragment="navbarFragment" class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/main">타로</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" sec:authorize="isAnonymous()">
+          <a class="nav-link" th:href="@{|/user/login|}">로그인</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAnonymous()">
+          <a class="nav-link" th:href="@{|/user/signup|}">회원가입</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" th:href="@{|/user/logout|}">로그아웃</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" th:href="@{|/profile|}">프로필</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{|/card/list|}">카드목록</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h1 class="text-center">피드백 목록</h1>
+
+  <div class="mb-3">
+    <a th:href="@{|/feedback/create|}" class="btn btn-primary">피드백 작성하기</a>
+  </div>
+
+  <!-- 피드백 목록 -->
+  <div>
+    <div th:each="feedback : ${feedbacks}">
+      <h3 th:text="${feedback.title}">피드백 제목</h3>
+      <p th:text="${feedback.content}">피드백 내용</p>
+      <p>작성자: <span th:text="${feedback.user.nickname}">닉네임</span></p>
+      <p>별점:
+        <span th:each="i : ${#numbers.sequence(1, feedback.rating)}">⭐</span>
+        <span th:each="i : ${#numbers.sequence(feedback.rating + 1, 5)}">✨</span>
+      </p>
+      <p>작성일: <span th:text="${#temporals.format(feedback.createdAt, 'yyyy-MM-dd HH:mm')}">날짜</span></p>
+
+      <!-- 수정 및 삭제 버튼 추가 -->
+      <div th:if="${feedback.user.username == #authentication.principal.username}">
+        <a th:href="@{|/feedback/modify/${feedback.id}|}" class="btn btn-warning">수정</a>
+        <a th:href="@{|/feedback/delete/${feedback.id}|}" class="btn btn-danger">삭제</a>
+      </div>
+
+      <!-- 댓글 버튼 -->
+      <button class="btn btn-secondary mt-2" th:onclick="'toggleCommentForm(' + ${feedback.id} + ')'">댓글 작성</button>
+
+      <!-- 댓글 작성 폼 -->
+      <div id="comment-form-[[${feedback.id}]]" class="comment-form mt-3" style="display: none;">
+        <form th:action="@{/comment/create}" method="post">
+          <input type="hidden" name="feedbackId" th:value="${feedback.id}" />
+          <div class="mb-3">
+            <textarea name="content" class="form-control" placeholder="댓글을 입력하세요..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">댓글 작성</button>
+        </form>
+      </div>
+
+      <hr>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 댓글 작성 폼 토글 함수
+  function toggleCommentForm(feedbackId) {
+    const commentForm = document.getElementById(`comment-form-${feedbackId}`);
+    commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>
+
+
+

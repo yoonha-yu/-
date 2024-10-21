@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드 목록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+        }
+        .modal-body {
+            display: flex;
+            flex-direction: row;
+        }
+        .modal-body .card-description {
+            margin-left: 20px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .intro-text {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.7); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/main">타로</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/profile}">프로필</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/user/logout}">로그아웃</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{/user/login}">로그인</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{/user/signup}">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/card/list}">카드목록</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <!-- 타이틀과 설명 텍스트를 가운데 정렬 -->
+    <div class="text-center">
+        <h2>카드 의미</h2>
+        <p class="intro-text">타로의 신비로운 세계를 탐험하고, 메이저 아르카나와 마이너 아르카나 카드의 의미를 분석하며,<br> 타로 카드의 깊은 의미를 이해합니다.</p>
+    </div>
+
+    <!-- 대아르카나 섹션 -->
+    <h3>대아르카나</h3>
+    <div class="row">
+        <!-- 카드 1 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="https://ifh.cc/g/oC8JHo.webp" class="card-img-top" alt="바보" data-bs-toggle="modal" data-bs-target="#modalCard1">
+                <div class="card-body">
+                    <h5 class="card-title">바보</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 1 -->
+        <div class="modal fade" id="modalCard1" tabindex="-1" aria-labelledby="modalCardLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel1">바보 타로 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="https://ifh.cc/g/oC8JHo.webp" alt="바보 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>새로운 시작, 자발성, 대담함, 순진함</p>
+                            <h6>정방향</h6>
+                            <p>무한한 가능성, 꿈의 추구, 미지</p>
+                            <h6>역방향</h6>
+                            <p>무모함, 경솔함, 손실</p>
+                            <h6>카드의 의미</h6>
+                            <p>절벽에 떨어질 위기를 무시하고 당당히 앞으로 나아가는 '어리석은' 젊은이...</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 2 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="path/to/card22.jpg" class="card-img-top" alt="카드 22" data-bs-toggle="modal" data-bs-target="#modalCard2">
+                <div class="card-body">
+                    <h5 class="card-title">카드 22</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 2 -->
+        <div class="modal fade" id="modalCard2" tabindex="-1" aria-labelledby="modalCardLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel2">카드 22</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="path/to/card22.jpg" alt="카드 22">
+                        <div class="card-description">
+                            <h6>카드의 설명</h6>
+                            <p>카드 22에 대한 설명이 여기에 표시됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 소아르카나 섹션 -->
+    <h3>소아르카나</h3>
+    <!-- 원드 슈트 -->
+    <h4>원드 슈트</h4>
+    <div class="row">
+        <div class="col-2">
+            <div class="card">
+                <img src="https://ifh.cc/g/DBHCj3.webp" class="card-img-top" alt="지팡이의 에이스" data-bs-toggle="modal" data-bs-target="#modalWands1">
+                <div class="card-body">
+                    <h5 class="card-title">지팡이의 에이스</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 원드 1 -->
+        <div class="modal fade" id="modalWands1" tabindex="-1" aria-labelledby="modalWandsLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalWandsLabel1">지팡이의 에이스</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="https://ifh.cc/g/DBHCj3.webp" alt="지팡이의 에이스">
+                        <div class="card-description">
+                            <h6>카드의 의미</h6>
+                            <p>지팡이의 에이스는 창의력과 새로운 영감을 의미합니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
