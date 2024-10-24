@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: taro
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/sbb_dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    username: root
+    password: qwer1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
+          show_sql: true
+
+  mvc:
+    static-path-pattern: /static/**
+    throw-exception-if-no-handler-found: true
+
+  web:
+    resources:
+      add-mappings: false
+
+  thymeleaf:
+    cache: false
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            clientId: a4006ed0c83cfbf02f9f167bb3fe7651               # Kakao API?? ???? ????? ID
+            authorization-grant-type: authorization_code
+            redirect-uri: 'http://localhost:8080/{action}/oauth2/code/{registrationId}'
+            scope:                        # ??? ??? (?: "profile", "email" ?)
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+logging:
+  level:
+    org:
+      thymeleaf: DEBUG
+      springframework:
+        web: DEBUG
+    hibernate:
+      orm:
+        jdbc:
+          bind: TRACE
+          extract: TRACE

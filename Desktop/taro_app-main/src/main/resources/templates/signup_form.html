@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #dfc2ff, #f7c7ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 60%; /* 전체 너비로 설정 */
+            max-width: 1800px; /* 최대 너비는 1800px로 설정 */
+            height: 90vh; /* 높이는 그대로 유지 */
+            padding: 20px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            flex-direction: column; /* 세로 방향으로 배치 */
+            justify-content: center; /* 수직 중앙 정렬 */
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex-grow: 1; /* 가로 방향으로 공간을 차지하도록 설정 */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+        }
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        input {
+            width: 99%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkgray;
+        }
+        .back-button {
+            background-color: transparent;
+            border: 2px solid #a76eff;
+            color: #a76eff;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #a76eff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Ohayo Tarot</h1>
+        <div class="nav">
+            <a href="/main">home</a>
+            <a href="/card/list">cardlist</a>
+        </div>
+    </div>
+
+    <!-- Signup Section -->
+    <div class="section">
+        <h4>회원가입</h4>
+        <form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">
+            <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+            <div class="mb-3">
+                <label for="username" class="form-label">사용자ID</label>
+                <input type="text" th:field="*{username}" placeholder="아이디 입력 (Enter your ID)" required>
+            </div>
+            <div class="mb-3">
+                <label for="password1" class="form-label">비밀번호</label>
+                <input type="password" th:field="*{password1}" placeholder="비밀번호 입력 (Enter your password)" required>
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label">비밀번호 확인</label>
+                <input type="password" th:field="*{password2}" placeholder="비밀번호 확인 입력 (Confirm your password)" required>
+            </div>
+            <div class="mb-3">
+                <label for="nickname" class="form-label">닉네임</label>
+                <input type="text" th:field="*{nickname}" placeholder="닉네임 입력 (Enter your nickname)" required>
+            </div>
+            <button type="submit">회원가입</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

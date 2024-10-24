@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+            background: linear-gradient(to bottom, #f4f4f4, #d1c4e9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-header .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 20px;
+        }
+
+        .profile-header .edit-btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .welcome-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .history-section, .reviews-section {
+            margin-bottom: 50px;
+        }
+
+        .history-section h3, .reviews-section h3 {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .history-section .history-items,
+        .reviews-section .reviews-items {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .history-section .history-items .history-item,
+        .reviews-section .reviews-items .review-item {
+            width: 45%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-item .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-item .stars {
+            color: gold;
+        }
+
+        .logout-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .alert {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h1>Ohayo Tarot</h1>
+    <div>
+        <a href="/main">home</a>
+        <a href="/card/list">cardlist</a>
+
+    </div>
+</nav>
+
+<div class="container">
+    <h2>프로필</h2>
+
+    <!-- 성공 메시지 출력 -->
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+        <span th:text="${successMessage}"></span>
+    </div>
+
+    <!-- 프로필 정보 및 버튼들 -->
+    <div class="profile-header">
+        <div>
+            <label class="form-label">닉네임:</label>
+            <span th:text="${user.nickname}"></span>
+        </div>
+        <div>
+            <a href="/profile/update" class="edit-btn">프로필 수정</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- History Section -->
+    <div class="history-section">
+        <h3>History</h3>
+        <div class="history-items">
+            <div class="history-item">
+                <h4>History A</h4>
+                <span th:text="${user.nickname}"></span>
+            </div>
+            <div class="history-item">
+                <h4>History B</h4>
+                <span th:text="${user.nickname}"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+        <h3>My Reviews</h3>
+        <div class="reviews-items">
+            <div class="review-item">
+                <div class="review-header">
+                    <span th:text="${user.nickname}"></span>
+                    <p class="stars">★★★★☆</p>
+                </div>
+                <p>정말 좋아용~!~!</p>
+            </div>
+            <div class="review-item">
+                <div class="review-header">
+                    <span th:text="${user.nickname}"></span>
+                    <p class="stars">★★★★☆</p>
+                </div>
+                <p>척척박사님이다!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <!-- Logout Button -->
+    <a href="#" th:href="@{/user/logout}" class="logout-btn">Log out</a>
+</div>
+
+
+</body>
+</html>

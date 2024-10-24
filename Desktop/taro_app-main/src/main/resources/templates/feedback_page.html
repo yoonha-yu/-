@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>피드백 목록</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .user-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .profile-image {
+      width: 40px; /* 가로 크기 */
+      height: 40px; /* 세로 크기 */
+      border-radius: 50%; /* 원형으로 만들기 */
+      margin-right: 10px; /* 닉네임과의 간격 */
+      object-fit: cover; /* 이미지 비율 유지하며 원형에 맞게 조정 */
+      object-position: center;
+    }
+
+    .nickname {
+      font-weight: bold;
+    }
+
+    .feedback-title {
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .feedback-content {
+      margin-bottom: 25px; /* 내용과 버튼 간의 간격 증가 */
+      font-size: 18px;
+    }
+
+    .button-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .left-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .left-buttons .btn-light {
+      background-color: transparent; /* 버튼 배경을 투명하게 */
+      border: none; /* 테두리 제거 */
+      padding: 0; /* 패딩 제거 (선택사항) */
+      color: inherit; /* 텍스트 색상을 상속받도록 설정 */
+    }
+
+    .left-buttons .btn-light:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* 호버 시 약간의 배경색 추가 (선택사항) */
+    }
+
+    .right-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-custom-edit {
+      background-color: white; /* 배경을 흰색으로 */
+      color: black; /* 텍스트 색상을 검정으로 */
+      border: 1px solid black; /* 테두리 색상을 검정으로 */
+      margin-right: 10px; /* 삭제 버튼과의 간격 */
+    }
+
+    .btn-custom-delete {
+      background-color: black; /* 배경을 검정색으로 */
+      color: white; /* 텍스트 색상을 흰색으로 */
+      border: 1px solid white; /* 테두리 색상을 흰색으로 */
+    }
+
+    .btn-custom-write {
+      background-color: black; /* 배경을 검정색으로 */
+      color: white; /* 텍스트 색상을 흰색으로 */
+      border: 1px solid white; /* 테두리 색상을 흰색으로 */
+      margin-bottom: 40px;
+    }
+
+    .star-rating {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      font-size: 20px;
+    }
+
+    body {
+      background-image: url('/images/background.jpg'); /* 이미지 경로 설정 */
+      background-size: cover; /* 배경 이미지를 화면 크기에 맞게 조정 */
+      background-repeat: no-repeat; /* 이미지 반복 방지 */
+      background-position: center; /* 이미지 위치 설정 */
+    }
+
+    .like-button-img {
+      width: 22px; /* 하트 이미지 가로 크기 */
+      height: 22px; /* 하트 이미지 세로 크기 */
+      margin-right: 5px; /* 이미지와 텍스트 간격 */
+      vertical-align: middle;
+    }
+
+    .comment-button-img {
+      width: 20px; /* 댓글 이미지 가로 크기 */
+      height: 20px; /* 댓글 이미지 세로 크기 */
+      margin-right: 5px; /* 이미지와 텍스트 간격 */
+      vertical-align: middle;
+    }
+    .comments-list {
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.7); /* 약간 투명한 흰색 배경 */
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+
+}
+
+.comments-list ul li {
+    font-size: 14px; /* 글씨 크기를 작게 설정 */
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 얇은 구분선 */
+}
+
+.comments-list ul li:last-child {
+    border-bottom: none; /* 마지막 댓글 아래는 선을 없애기 */
+}
+
+
+.comment-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: black; /* 버튼 색상은 검정 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* 댓글 작성 버튼 크기 줄이기 */
+.comment-form .btn-primary {
+    background-color: black;
+    border: none;
+    font-size: 12px; /* 글씨 크기 조정 */
+    padding: 5px 10px; /* 버튼 크기 조정 */
+}
+
+/* 댓글 수정/삭제 버튼 크기 줄이기 */
+.comment-buttons .btn-custom-edit,
+.comment-buttons .btn-custom-delete {
+    font-size: 12px; /* 글씨 크기 조정 */
+    padding: 5px 10px; /* 버튼 크기 조정 */
+}
+    .comment-list-title {
+    font-size: 14px; /* 원하는 크기로 설정 */
+}
+  </style>
+</head>
+<body>
+
+<!-- 네비게이션 바 -->
+<nav th:fragment="navbarFragment" class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <div class="container-fluid">
+    <!--오류해결 -->
+    <a class="navbar-brand" th:href="@{/main}">OhayoTaro</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" sec:authorize="isAnonymous()">
+          <a class="nav-link" th:href="@{|/user/login|}">Login</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAnonymous()">
+          <a class="nav-link" th:href="@{|/user/signup|}">Sign in</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" th:href="@{|/user/logout|}">Logout</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" th:href="@{|/profile|}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{|/card/list|}">Card list</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h1 class="text-center">Review List</h1>
+
+  <div class="mb-3">
+    <a th:href="@{|/feedback/create|}" class="btn btn-custom-write">Write Review</a>
+  </div>
+
+  <!-- 피드백 목록 -->
+  <div>
+    <div th:each="feedback : ${feedbacks}">
+      <div class="user-info">
+        <div>
+          <!-- 프로필 이미지 표시, 기본 이미지 추가 -->
+          <img th:src="${feedback.user.profileImageUrl != null ? feedback.user.profileImageUrl : '/images/basic_profile.png'}" alt="프로필 사진" class="profile-image" />
+          <span th:text="${feedback.user.nickname}" class="nickname"></span>
+        </div>
+        <div class="star-rating">
+          <!-- 별점 이미지 표시 -->
+          <span th:each="i : ${#numbers.sequence(1, feedback.rating)}">
+            <img src="/images/star_filled.png" alt="Filled Star" style="width: 20px; height: 20px;" />
+          </span>
+          <span th:if="${feedback.rating < 5}" th:each="i : ${#numbers.sequence(feedback.rating + 1, 5)}">
+            <img src="/images/star_empty.png" alt="Empty Star" style="width: 20px; height: 20px;" />
+          </span>
+        </div>
+      </div>
+
+      <h3 th:text="${feedback.title}" class="feedback-title">피드백 제목</h3>
+      <p th:text="${feedback.content}" class="feedback-content">피드백 내용</p>
+
+      <!-- 버튼 그룹 -->
+      <div class="button-group">
+        <!-- 왼쪽 버튼들 -->
+        <div class="left-buttons">
+          <form th:action="@{/feedback/like/{id}(id=${feedback.id})}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-light" style="display: flex; align-items: center;">
+              <img src="/images/heart.png" alt="Like" class="like-button-img" style="margin-right: 5px;" />
+              <span th:text="${feedback.likes}">0</span>
+            </button>
+          </form>
+          <!-- 댓글 버튼 이미지로 변경 -->
+          <button class="btn btn-light" data-feedback-id="[[${feedback.id}]]" onclick="toggleCommentForm(this)" style="display: flex; align-items: center;">
+            <img src="/images/chat.png" alt="Comment" class="comment-button-img" />
+            <span th:text="${#lists.size(feedback.comments)}">0</span>
+          </button>
+        </div>
+        <!-- 수정, 삭제 버튼 -->
+        <div class="right-buttons" th:if="${feedback.user.username == #authentication.principal.username}">
+          <a th:href="@{|/feedback/modify/${feedback.id}|}" class="btn btn-custom-edit">edit</a>
+          <a th:href="@{|/feedback/delete/${feedback.id}|}" class="btn btn-custom-delete">delete</a>
+        </div>
+      </div>
+
+      <!-- 댓글 작성 폼 -->
+      <div id="comment-form-[[${feedback.id}]]" class="comment-form mt-3" style="display: none;">
+        <form th:action="@{/comment/create}" method="post">
+          <input type="hidden" name="feedbackId" th:value="${feedback.id}" />
+          <div class="mb-3">
+            <textarea name="content" class="form-control" placeholder="댓글을 입력하세요..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      <!-- 댓글 목록 추가 부분 -->
+      <div class="comments-list" id="comments-list-[[${feedback.id}]]" style="display: none;">
+        <h4 class="comment-list-title">Comment List</h4>
+
+        <!-- 댓글 수 표시 -->
+
+        <ul>
+          <th:block th:each="comment : ${feedback.comments}">
+            <li>
+              <span th:text="${comment.nickname}">닉네임</span>: <!-- 작성자 닉네임 추가 -->
+              <span th:text="${comment.content}">댓글 내용</span>
+
+              <!-- 댓글 수정 및 삭제 버튼 추가 -->
+              <div class="comment-buttons">
+                <form th:action="@{/comment/update/{commentId}(commentId=${comment.id})}" method="post" style="display: inline;">
+                  <input type="hidden" name="content" th:value="${comment.content}" />
+                  <button type="submit" class="btn btn-custom-edit">Edit</button>
+                </form>
+
+                <form th:action="@{/comment/delete/{commentId}(commentId=${comment.id})}" method="post" style="display: inline;">
+                  <button type="submit" class="btn btn-custom-delete">Delete</button>
+                </form>
+              </div>
+              <!-- 댓글 수정 및 삭제 버튼 추가 끝 -->
+            </li>
+          </th:block>
+        </ul>
+      </div>
+
+      <hr>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 댓글 작성 폼 토글 함수
+ function toggleCommentForm(button) {
+     // data-feedback-id 속성에서 ID 값 가져오기
+     const feedbackId = button.getAttribute('data-feedback-id');
+
+     const commentForm = document.getElementById('comment-form-' + feedbackId);
+     const commentsList = document.getElementById('comments-list-' + feedbackId);
+
+     if (commentForm) {
+         commentForm.style.display = (commentForm.style.display === 'none' || commentForm.style.display === '') ? 'block' : 'none';
+     } else {
+         console.error("해당 ID의 코멘트 폼을 찾을 수 없습니다: comment-form-" + feedbackId);
+     }
+
+     // 댓글 목록 토글
+     if (commentsList) {
+         commentsList.style.display = (commentsList.style.display === 'none' || commentsList.style.display === '') ? 'block' : 'none';
+     }
+ }
+</script>
+</body>
+</html>

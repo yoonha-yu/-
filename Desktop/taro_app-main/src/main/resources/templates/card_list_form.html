@@ -1,0 +1,3389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드 목록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+        }
+        .modal-body {
+            display: flex;
+            flex-direction: row;
+        }
+        .modal-body .card-description {
+            margin-left: 20px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .intro-text {
+            margin-bottom: 30px;
+        }
+        .card-body h5 {
+        font-size: 14px; /* 원하는 글자 크기로 설정 */
+    }
+        body {
+            background: linear-gradient(to bottom right, #dfc2ff, #f7c7ff);
+}
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(255, 255, 255, 0.7); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/main">타로</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/profile}">프로필</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/user/logout}">로그아웃</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{/user/login}">로그인</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{/user/signup}">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/card/list}">카드목록</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <!-- 타이틀과 설명 텍스트를 가운데 정렬 -->
+    <div class="text-center">
+        <h2>카드 의미</h2>
+        <p class="intro-text">타로의 신비로운 세계를 탐험하고, 메이저 아르카나와 마이너 아르카나 카드의 의미를 분석하며,<br> 타로 카드의 깊은 의미를 이해합니다.</p>
+    </div>
+
+    <!-- 메이저아르카나 섹션 -->
+    <h3>메이저아르카나</h3>
+    <div class="row">
+        <!-- 카드 1 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="https://ifh.cc/g/oC8JHo.webp" class="card-img-top" alt="바보" data-bs-toggle="modal" data-bs-target="#modalCard1">
+                <div class="card-body">
+                    <h5 class="card-title">바보</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 1 -->
+        <div class="modal fade" id="modalCard1" tabindex="-1" aria-labelledby="modalCardLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel1">바보 타로 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="https://ifh.cc/g/oC8JHo.webp" alt="바보 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>새로운 시작, 자발성, 대담함, 순진함</p>
+                            <h6>정방향</h6>
+                            <p>무한한 가능성, 꿈의 추구, 미지</p>
+                            <h6>역방향</h6>
+                            <p>무모함, 경솔함, 손실</p>
+                            <h6>카드의 의미</h6>
+                            <p>절벽에 떨어질 위험을 무시하고 당당히 앞으로 나아가는 '어리숙한' 젊은이. '바보는 경험을 추구하는 마음이다.' 타로 카드에서 바보의 번호는 0번이며, '0'은 없음이 아니라 우주 만물을 포함한다. 이 젊은이는 광대 복장을 하고 화려한 옷을 입고 있으며, 활기차 보이고 걱정이 전혀 없어 보인다. 그는 무모하고 무지하며 약간 흥분해 있지만, 결코 추구의 발걸음을 멈추지 않는다. 그는 현재를 사는 낙천주의자로, 발 아래의 절벽을 무시한다. 이른바 '무지한 자가 두려움이 없다'는 말이 바로 이 이치다. 그의 인생은 이제 막 시작되었고, 경험 부족과 쓸모없는 열정으로 많은 어려움을 겪을 것이며 앞날은 불투명하지만, 누가 그가 도달한 곳이 바로 희망이 있는 곳이 아니라고 말할 수 있겠는가?</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 2 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/마법사.jpg" class="card-img-top" alt="마법사" data-bs-toggle="modal" data-bs-target="#modalCard2">
+                <div class="card-body">
+                    <h5 class="card-title">마법사</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 2 -->
+        <div class="modal fade" id="modalCard2" tabindex="-1" aria-labelledby="modalCardLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel2">마법사 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/마법사.jpg" alt="마법사 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>행동, 집중, 의식적 행동, 통제력, 소통, 주도성
+                            </p>
+                            <h6>정방향</h6>
+                            <p>의사소통 능력, 치밀한 사고, 자신감, 좋은 시작, 순조로운 발전, 뛰어난 기술, 새로운 연애</p>
+                            <h6>역방향</h6>
+                            <p>잘못된 방향, 속임수 또는 실패, 상황 통제 불능, 열정과 창의력 부족, 정체된 사랑</p>
+                            <h6>카드의 의미</h6>
+                            <p>마법사는 자신감 넘치는 미소와 빛나는 눈을 가지고 있으며, 오른손은 하늘을 향하고 왼손은 땅을 향하고 있어 소통을 나타낸다. 우주를 조종하는 힘과 비범한 창조력을 가진 것 같다. 마법사는 주문을 걸고 있으며, 명확한 사고 능력과 매우 주도적인 성격, 강한 의지와 순수한 마음, 행동력과 창의력, 그리고 세상에 영향을 미칠 수 있는 비범한 힘을 가지고 있다. 마법사의 번호는 '1'이다. '1'은 모든 숫자의 시작이며, 무한한 잠재력의 시작을 의미한다. 시작하기만 하면 성공을 얻을 수 있고, 아름다운 꿈이 모두 만질 수 있는 현실이 될 것임을 예고한다. 마법사는 적극적이고 진취적인 태도이며, 잠재적인 에너지를 가지고 있지만, 앞길이 멀고 모든 것이 이제 막 시작되었을 뿐이다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 3 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="여사제" class="card-img-top" alt="여사제" data-bs-toggle="modal" data-bs-target="#modalCard3">
+                <div class="card-body">
+                    <h5 class="card-title">여사제</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 3 -->
+        <div class="modal fade" id="modalCard3" tabindex="-1" aria-labelledby="modalCardLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel3">여사제 타로 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/마법사" alt="마법사 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>잠재력, 직관, 지성, 신비, 소극적, 정적</p>
+                            <h6>정방향</h6>
+                            <p>잠재력, 침묵과 인내, 깊은 생각, 예리한 통찰력, 정확한 직관, 평범한 연애</p>
+                            <h6>역방향</h6>
+                            <p>까다로움, 탐욕, 근시안적, 부적절한 열정, 자만심, 짝사랑</p>
+                            <h6>카드의 의미</h6>
+                            <p>마법사가 양을 상징한다면, 여사제는 음을 상징하며 깊이 있고 숨겨진 것들을 나타낸다. 여사제는 생각이 깊고 약간 신비로워 보인다. 그녀의 발에는 초승달이 있고 머리에는 왕관이 있어 만물이 그녀의 통제 아래 있다. 여사제는 직관이 예리하며, 신비한 영역의 일에 대해 누구보다도 깊이 이해하고 있다. 여사제는 마음의 성장에 관심을 가지지만, 감정에 대해서는 종종 냉담하거나 회피하는 태도를 취한다. 이 카드를 만났을 때, 당사자에게 조용히 관찰하고 직관에 따라 행동하는 것이 문제를 해결하는 방법임을 상기시키는 것일 수 있다. 즉, 내면의 숨겨진 부름에 귀 기울이라는 의미이다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 4 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/여황제.jpg" class="card-img-top" alt="여황제" data-bs-toggle="modal" data-bs-target="#modalCard4">
+                <div class="card-body">
+                    <h5 class="card-title">여황제</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 4 -->
+        <div class="modal fade" id="modalCard4" tabindex="-1" aria-labelledby="modalCardLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel4">여황제 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/여황제.jpg" alt="여황제 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+
+                                <h6>키워드</h6>
+                                <p>모성, 기쁨, 경험, 감각, 풍요로움, 자연, 수확</p>
+
+                                <h6>정방향</h6>
+                                <p>모성애, 기쁨, 우아함, 행복, 성공, 수확, 배려, 풍작, 생산, 예술, 자연과의 연결, 강한 감수성, 낭비적인 사랑</p>
+
+                                <h6>역방향</h6>
+                                <p>냉담, 진취성 부족, 기쁨의 소멸, 산만함, 어려움, 향락, 위험한 환경, 자만심, 감정의 좌절</p>
+
+                                <h6>카드의 의미</h6>
+                                <p>여황제는 생기 넘치는 대지 위에 우아하게 앉아 있으며, 기쁨 속에서도 우아함을 잃지 않고 천하를 다스리는 위엄을 갖추고 있다. 그녀는 우아한 여성의 모든 미덕을 지니고 있다. 여사제와 비교하면, 여황제는 더 감성적이며 실생활의 위대한 여성상에 더 가깝다. 만약 당사자가 남성이라면, 주변의 여성과 관련이 있을 수 있거나 당사자 본인에게 여성적인 성향이 있음을 암시한다. 가장 원초적인 여황제 카드의 정방향 해석은 '수확, 주도적 행동, 숨겨진 미지의 사물, 무지 또는 망설임'이었다. 후에 카드의 의미가 발전하면서 풍작과 기쁨 외에는 큰 차이가 생겼다. 여황제 카드가 정방향일 때는 대개 광명과 풍작, 그리고 모성의 모든 장점을 나타내며, 무지와 망설임의 의미는 거의 없다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 5 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/황제.jpg" class="card-img-top" alt="황제" data-bs-toggle="modal" data-bs-target="#modalCard5">
+                <div class="card-body">
+                    <h5 class="card-title">황제</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 5 -->
+        <div class="modal fade" id="modalCard5" tabindex="-1" aria-labelledby="modalCardLabel5" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel5">황제 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/황제.jpg" alt="황제 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>전쟁, 승리, 지배</p>
+
+                            <h6>정방향</h6>
+                            <p>아버지, 영광, 권력, 승리, 영향력, 강한 의지, 책임, 고독; 감정 교류 부족</p>
+
+                            <h6>역방향</h6>
+                            <p>미성숙, 좌절, 독단, 권력 남용, 냉혹, 소유욕과 통제욕 강함, 감정 강요</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>황제는 국가의 최고 존엄이며, 남성 권력의 대표 인물로, 부권 지상주의의 상징입니다. 그는 냉엄한 표정으로 천하를 위협하고, 영토를 확장합니다. 황제는 물질 세계를 지배하는 힘을 가지고 있으며, 도덕적 계율과 금기를 대표합니다. 황제 카드가 정위치에 있을 때는 주로 이성, 질서, 권위, 영광을 나타냅니다. 하지만 황제가 현명한 군주일 수도 있고 폭군일 수도 있다는 점을 부인할 수 없으므로, 황제 카드는 좋을 수도 나쁠 수도 있습니다. 그의 높은 위엄은 항상 백성들을 굴복시킬 수 있지만, 동시에 고독한 느낌을 줍니다. 감정을 예측할 때, 황제 카드가 정위치든 역위치든 어느 정도 감정적 냉담함의 의미를 내포하고 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 6 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/교황.jpg" class="card-img-top" alt="교황" data-bs-toggle="modal" data-bs-target="#modalCard6">
+                <div class="card-body">
+                    <h5 class="card-title">교황</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 6 -->
+        <div class="modal fade" id="modalCard6" tabindex="-1" aria-labelledby="modalCardLabel6" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel6">교황 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/교황.jpg" alt="교황 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>교육, 일치, 신념 체계, 집단 정체성, 도움, 전통</p>
+
+                            <h6>정방향</h6>
+                            <p>도움, 동정심, 관용, 지도, 정신적 만족, 규칙 준수, 자원봉사자, 서로 사랑함</p>
+
+                            <h6>역방향</h6>
+                            <p>악의적 권고, 고군분투, 속임, 도움 중단, 소원 불성취, 버림받음, 감정적 상실</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>교황은 신의 어린양으로, 진리를 계시하고 전파합니다. 교황은 당연히 종교와 밀접한 관계가 있지만, 여사제와는 달리 신비롭고 고고하지 않습니다. 그는 세속적이며, 그의 임무는 사람들 사이에서 신의 뜻을 전파하는 것입니다. 황제가 물질적 보장을 제공하는 아버지라면, 교황은 사람들에게 정신적 양분을 제공하는 영적 아버지입니다. 정신의 성장은 길고 어려운 과정이며, 정신적 교육은 물질적 보장만큼이나 중요합니다. 교황은 우리의 정신을 책임지고, 무엇이 도덕적이고 무엇이 비도덕적인지, 무엇이 정의롭고 무엇이 부정의한지 알려주며, 우리를 올바른 길로 인도합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 7 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/연인.jpg" class="card-img-top" alt="연인" data-bs-toggle="modal" data-bs-target="#modalCard7">
+                <div class="card-body">
+                    <h5 class="card-title">연인</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 7 -->
+        <div class="modal fade" id="modalCard7" tabindex="-1" aria-labelledby="modalCardLabel7" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel7">연인 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/연인.jpg" alt="연인 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>선택, 사랑, 성욕, 결합, 관계, 개인적 신념, 가치</p>
+
+                            <h6>정방향</h6>
+                            <p>선택, 시험, 건강, 유행, 매력, 친구 증가, 좋은 협력, 성욕, 순결과 달콤한 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>유혹에 약함, 방종, 반복, 우정 약화, 권태, 다툼, 우유부단, 잘못된 결정, 사랑의 좌절</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>그림 속 벌거벗은 남녀는 아담과 이브입니다. 아담은 깊은 애정으로 이브를 바라보고, 이브는 천사를 바라봅니다. 그들은 마치 세상에 처음 온 것처럼 표정이 담담하며, 이브는 천사에게 그들의 사랑을 축복해 달라고 요청하는 것 같습니다. 이 카드의 해석은 '아담과 이브의 매혹적인 육체는 유형의 물질에 오염되기 전의 청춘과 순결, 순수함과 사랑을 상징한다'입니다. 타로의 연인 카드는 성경의 이 고사에서 영감을 받았지만, 더 많은 것은 그 함축적 의미인 '선택'에서 가져왔습니다. 만약 예측 시 사랑과 관련이 없다면, 그 의미는 광범위하며, 종종 당사자가 선택의 기로에 서 있어 판단을 내려야 함을 암시합니다. 결합과 선택의 이중적 의미를 가지고 있습니다. 연인 카드가 사랑을 상징할 때는 종종 욕망, 성욕, 육체 등의 의미를 내포하고 있습니다. 이는 일반적으로 사랑을 상징하는 또 다른 카드인 '성배 2'와의 차이점입니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 8 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/전차.jpg" class="card-img-top" alt="전차" data-bs-toggle="modal" data-bs-target="#modalCard8">
+                <div class="card-body">
+                    <h5 class="card-title">전차</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 8 -->
+        <div class="modal fade" id="modalCard8" tabindex="-1" aria-labelledby="modalCardLabel8" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel8">전차 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/전차.jpg" alt="전차 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>승리, 자기 선언, 의지, 강력한 통제, 자기 규율</p>
+
+                            <h6>정방향</h6>
+                            <p>행동, 에너지 충만, 승리, 장애 극복, 자립, 시도, 통제, 자기 주장</p>
+
+                            <h6>역방향</h6>
+                            <p>분쟁, 정체, 규칙 위반, 적수, 폭력, 고집, 실패, 잘못된 결정, 이기주의</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>전차를 모는 왕자는 오직 앞만 보고 있으며, 그의 마음속에는 오직 이방을 정복하려는 뜨거운 야망만이 있습니다. 전차의 주요 의미는 자명합니다: 확고하고 강력한 의지력입니다. 카드 면에서도 볼 수 있듯이, 왕자의 손에는 고삐가 없습니다. 그의 의지만으로 모든 것을 통제할 수 있습니다. 6번 카드는 연인으로, 주요 의미는 중대한 선택이며, 그 다음에 오는 전차는 선택 후의 실제 행동입니다. 예측 시 이 카드를 만나면 당사자가 어느 정도의 도전에 직면해 있음을 의미합니다. 그렇다면 이 카드는 질문자에게 포기하지 말고 노력하고 전진하는 것이 유일한 올바른 선택임을 상기시킵니다. 당사자가 어떤 일을 처리하는 데 있어 경쟁 상대를 만날 수 있지만, 최종 승리자는 반드시 당신일 것입니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 9 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/힘.jpg" class="card-img-top" alt="힘" data-bs-toggle="modal" data-bs-target="#modalCard9">
+                <div class="card-body">
+                    <h5 class="card-title">힘</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 9 -->
+        <div class="modal fade" id="modalCard9" tabindex="-1" aria-labelledby="modalCardLabel9" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel9">힘 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/힘.jpg" alt="힘 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>힘을 보여주다, 동정심, 인내심, 적절한 통제, 용기</p>
+
+                            <h6>정방향</h6>
+                            <p>부드러운 통제, 유연함으로 강함을 이기다, 겉은 부드럽고 속은 강함, 용기, 대담한 행동, 결단력, 새로운 발전, 건강, 진실한 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>겁이 많음, 굴복, 실천 없이 포기, 허영심, 비겁함, 인내심 부족, 유혹에 약함</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>이것은 의미가 명확하고 사람들을 고무시키는 카드입니다. 그림 속의 여성은 매우 쉽게 사자를 길들였습니다. 이 유연함으로 강함을 이기는 여성의 신성한 힘은 그녀의 강하고 불패의 의지에서 비롯됩니다. 전체 그림은 놀라운 조화의 아름다움으로 가득 차 있습니다. 사자와 여성, 겉보기에 비교할 수 없는 두 종류의 힘이 약자의 승리와 강자의 길들임으로 끝납니다. 이는 또한 힘의 의미가 단순한 물리적 힘이 아님을 암시합니다. 오히려 내면의 강인함을 가리킵니다. 그녀의 표정은 자애로운 어머니처럼 평온하지만, 그 온화함 속에는 위엄과 자신감의 광채가 그녀를 둘러싸고 있습니다. 점을 볼 때, 이 카드의 주요 의미는 당사자가 의지력을 통해 성공을 얻을 수 있음을 나타냅니다. 관계를 다룰 때는 부드럽게 대해야 하며, 장기적인 안목을 가져야 하고, 감정적으로 행동해서는 안 됩니다. 역방향이라면 당사자가 무력과 표면적인 강한 힘에 의해 통제되고 있음을 나타냅니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 10 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/은둔자.jpg" class="card-img-top" alt="은둔자" data-bs-toggle="modal" data-bs-target="#modalCard10">
+                <div class="card-body">
+                    <h5 class="card-title">은둔자</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 10 -->
+        <div class="modal fade" id="modalCard10" tabindex="-1" aria-labelledby="modalCardLabel10" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel10">은둔자 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/은둔자.jpg" alt="은둔자 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>추구, 반성, 인도, 탐색, 고독 추구, 신중, 지도</p>
+
+                            <h6>정방향</h6>
+                            <p>현자, 냉정, 고독, 자족, 경청, 추구, 조언 수용, 독신, 감정 관계에서 물러남</p>
+
+                            <h6>역방향</h6>
+                            <p>조언 무시, 고립, 자신감 부족, 걱정, 미성숙, 신중함으로 인한 실패, 고독을 견디기 어려움</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>'은둔자는 추구하는 영혼이다.' 현자는 망토를 입고 빙산 정상에 서서 어둠 속에서 등불을 들고 있습니다. 그는 진리를 추구하는 데 전념하며, 세상과 떨어져 있지만 그의 시선은 항상 인류를 애정 어린 눈으로 내려다봅니다. 대아르카나 카드의 '바보'는 이제 무모한 젊은이에서 백발의 노인으로 성장했습니다. 그는 열정을 잃었을지 모르지만, 지혜와 경험은 날로 증가했습니다. 그는 이제 인생을 냉정하게 바라보지만, 그렇다고 내면의 열정이 없다는 뜻은 아닙니다. 봄꽃과 가을달의 삶을 겪으며, 그는 자신의 삶에서 많은 실수를 반성하면서도 어떻게 인류에게 관심을 줄 수 있을지 고민합니다. 그는 인류를 사랑하기 때문입니다. 은둔자는 기꺼이 고독을 받아들이고, 밤색 속에서 걸으며, 항상 인류를 사상과 세속적 삶의 감옥에서 어떻게 구출할 수 있을지 생각합니다. 점을 볼 때 은둔자 카드의 첫 번째 의미는 추구와 지도이며, 또한 일을 냉정하게 처리함을 나타내기도 하고, 때로는 연장자나 선배의 의견을 들어야 할 필요가 있음을 나타내기도 합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 11 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/운명의 수레바퀴.jpg" class="card-img-top" alt="운명의 수레바퀴" data-bs-toggle="modal" data-bs-target="#modalCard11">
+                <div class="card-body">
+                    <h5 class="card-title">운명의 수레바퀴</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 11 -->
+        <div class="modal fade" id="modalCard11" tabindex="-1" aria-labelledby="modalCardLabel11" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel11">운명의 수레바퀴 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/운명의 수레바퀴.jpg" alt="운명의 수레바퀴 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>운명, 변화, 기회, 진전, 움직임</p>
+
+                            <h6>정방향</h6>
+                            <p>좋은 변화, 예상치 못한 놀라움, 새로운 기회, 행운의 시작, 문제 해결, 운명적인 인연의 출현</p>
+
+                            <h6>역방향</h6>
+                            <p>연속된 불행, 좌절, 계획 무산, 나쁜 방향으로의 발전, 악순환, 일시적인 사랑</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>끊임없이 돌아가는 바퀴는 멈추지 않는 우주의 운행과 인생의 부침을 나타내며, 마치 세상의 생사와 생명의 흐름을 이야기하는 것 같습니다. 운명의 수레바퀴는 대아르카나 카드 중 유일하게 인물이 없는 대카드입니다. '인물'의 부재는 운명의 전장에서 순수한 의미의 승리자가 없음을 보여줍니다. 인생은 승부를 예측하기 어려운 게임과 같습니다. 어떤 사람은 먼저 이기고 나중에 지고, 어떤 사람은 먼저 지고 나중에 이기며, 어떤 사람은 평생 아무 탈 없이 평안하게 살지만, 어떤 사람은 계속해서 위험한 운명에 처합니다. 소위 좋고 나쁜 변화도 단지 상대적인 의미일 뿐입니다. 그러나 점을 볼 때 운명의 수레바퀴 카드가 정방향으로 나타나면, 주로 일이 좋은 방향으로 변화하고 있음을 나타내며, 역방향이면 일이 나쁜 방향으로 발전할 우려가 있음을 나타냅니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 12 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/정의.jpg" class="card-img-top" alt="정의" data-bs-toggle="modal" data-bs-target="#modalCard12">
+                <div class="card-body">
+                    <h5 class="card-title">정의</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 12 -->
+        <div class="modal fade" id="modalCard12" tabindex="-1" aria-labelledby="modalCardLabel12" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel12">정의 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/정의.jpg" alt="정의 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+
+                                <h6>키워드</h6>
+                                <p>정의, 결정, 균형, 법률, 책임, 인과</p>
+
+                                <h6>정방향</h6>
+                                <p>공정, 합리, 판결, 되찾음, 정의, 정직, 당당함, 약자 돕기, 상대방을 배려하는 연인</p>
+
+                                <h6>역방향</h6>
+                                <p>불공평, 속임을 당함, 분쟁, 편파, 양립하기 어려움, 책임 회피, 굴욕감, 감정의 보답을 따짐</p>
+
+                                <h6>카드의 의미</h6>
+                                <p>정의의 여신은 하늘을 향해 맹세하는 것 같습니다: '신이시여, 저는 당신의 신뢰를 받을 만합니다!' 정의의 여신은 정의를 수호하고 공정을 추구하며, 냉정하면서도 날카로운 기질을 드러냅니다. 정의의 여신은 법의 화신입니다. 그녀의 왼손에는 저울이 있고, 오른손에는 높이 든 검이 있어 그녀의 공정함과 공평함을 상징합니다. 그녀는 붉은 망토를 입고 금관을 쓰고 있으며, 녹색 숄은 사각형 단추로 고정되어 있습니다. 그녀는 돌의자에 앉아 있으며, 심지어 그녀의 얼굴도 의도적으로 중성적인 모습을 띠고 있어, 마치 그녀의 처신이 편견 없이 공평한 것이 유일한 기준인 것처럼 보입니다. 점을 볼 때 정의 카드가 나타나면, 당신이 어떤 결정을 내려야 할 필요가 있음을 상기시킬 수 있습니다. 이 일은 당신의 내면의 도덕적 힘을 사용하여 균형을 잡고 해결해야 하며, 개인적인 욕심 때문에 자신이나 자신과 가까운 사람을 편들어서는 안 됩니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 13 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/행맨.jpg" class="card-img-top" alt="행맨" data-bs-toggle="modal" data-bs-target="#modalCard13">
+                <div class="card-body">
+                    <h5 class="card-title">행맨</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 13 -->
+        <div class="modal fade" id="modalCard13" tabindex="-1" aria-labelledby="modalCardLabel13" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel13">행맨 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/행맨.jpg" alt="행맨 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>순응, 매달림, 역방향, 희생, 관점 전환</p>
+
+                            <h6>정방향</h6>
+                            <p>자기 희생, 시련, 명상, 순종, 최악의 상황에서 벗어남, 관점 전환, 유머, 욕망 절제</p>
+
+                            <h6>역방향</h6>
+                            <p>불공정, 기만당함, 분쟁, 편견, 양립 불가능, 책임 회피, 굴욕감, 감정의 대가를 따짐</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>이는 T자형 나무에 거꾸로 매달린 젊은 남자로, 두 손을 등 뒤로 하고 한 발을 구부려 완성을 상징하는 연금술 기호를 만들어 위대한 업적의 완성을 나타냅니다. 매달린 사람은 타로 카드 중 절대적인 이단아로, 약간 '포스트모던'한 느낌이 있으며, 은둔자 카드와 마찬가지로 세상을 냉정하게 바라보는 의미가 있습니다. 매달린 사람은 겉보기에는 '무책임'해 보이지만, 실제로는 세상에 대해 생각하는 사람, 삶에 대해 생각하는 사람입니다. 그는 '가을 달과 봄바람을 익숙히 보았고', 큰 풍파도 겪었기 때문에 문제를 다른 각도에서 생각하고자 하는 것입니다. 즉, 거꾸로 매달려 세상을 보는 것입니다. 매달린 사람은 행복한 그리스도와 같아서, 자기 희생을 하면서도 즐거워하며, 냉정함 속에 약간의 조롱을 담고 있습니다. 매달린 사람 카드가 정방향일 때는 보상이 있는 희생을 의미하며, 어려움에 처했을 때 이 카드는 우회적이고 유연하게 문제를 해결해야 함을 암시합니다. 사고방식을 바꾸면 어려운 문제를 성공적으로 해결할 수 있을 것입니다. 또한 난처한 상황에 직면했을 때 인내심이 필요하며 성급하게 행동해서는 안 된다는 것을 상기시킬 수 있습니다. 역방향일 경우에는 보상 없는 희생이나 아무것도 하지 않겠다는 의미일 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 14 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/죽음.jpg" class="card-img-top" alt="죽음" data-bs-toggle="modal" data-bs-target="#modalCard14">
+                <div class="card-body">
+                    <h5 class="card-title">죽음</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 14 -->
+        <div class="modal fade" id="modalCard14" tabindex="-1" aria-labelledby="modalCardLabel14" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel14">죽음 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/죽음.jpg" alt="죽음 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>종말, 변화, 새로운 탄생, 제거, 변화, 내면의 힘</p>
+
+                            <h6>정방향</h6>
+                            <p>종말, 실패, 절교, 피할 수 없는 운명, 격렬한 변화, 잔해, 과거와의 작별, 실연</p>
+
+                            <h6>역방향</h6>
+                            <p>새로운 시작, 다시 시작, 곤경에서 벗어남, 새롭게 변화, 생각의 변화, 명예 회복, 사랑의 전환점</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>약자의 애원이나 눈앞의 참혹한 광경도 해골 기사의 집요한 전진을 막을 수 없습니다. 왕은 죽음을 거부하여 백마에 밟히고, 주교의 한때 위풍당당했던 지팡이도 이제는 땅에 떨어져 있습니다. 죽음 앞에서는 신의 대리인이라는 신분도 더 이상 면제 특권이 없습니다. 땅에 무릎 꿇은 여인은 한때 힘 카드에서 전능했던 여인이었지만, 잔인한 죽음 앞에서 그녀는 저항할 힘을 잃고 얼굴을 돌려 죽음의 도래를 조용히 기다릴 뿐입니다. 가장 불쌍한 것은 그 무고한 아이로, 아직 죽음에 대해 무지한 나이에 있어 이 모든 것을 호기심 어린 눈으로 바라보고 있습니다. 그러나 그가 운명이 그에게 강요한 재난을 피할 수 있을까요? 죽음의 도래를 막을 수 있는 힘은 없습니다. 세상의 모든 것이 그렇듯이, 시간을 제외하고는 영원히 불멸할 수 있는 것은 없습니다. 하지만 이 카드는 기본적으로 육체적 죽음의 의미는 거의 없으며, 더 많은 경우 각종 형태의 종말을 가리키며, 동시에 이 카드는 종말 후의 새로운 탄생을 암시합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 15 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/절제.jpg" class="card-img-top" alt="절제" data-bs-toggle="modal" data-bs-target="#modalCard15">
+                <div class="card-body">
+                    <h5 class="card-title">절제</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 15 -->
+        <div class="modal fade" id="modalCard15" tabindex="-1" aria-labelledby="modalCardLabel15" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel15">절제 카드의 의미</h5>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/절제.jpg" alt="절제 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>절제, 건강, 균형, 결합, 욕망, 조화, 협력</p>
+
+                            <h6>정방향</h6>
+                            <p>통제, 평화, 점진적 개선, 좋은 가정, 실용성, 욕망 절제로 소원 성취, 점점 깊어지는 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>신뢰 상실, 낭비, 친구를 잃음, 과도한 욕망, 세상의 위험을 보지 못함, 성장 없음, 연애 시 충동적</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>사랑스러운 금발의 천사가 천천히 물을 성배에 붓고 있습니다. 이 두 개의 성배 중 하나는 '물질'을, 다른 하나는 '정신'을 나타내며, 모든 사람이 물질과 정신의 이중적 갈망을 가지고 있음을 상징합니다. 하지만 어느 성배도 가득 차지 않았는데, 이는 천사가 우리에게 일을 하거나 사람을 대할 때 '과유불급'에 주의해야 한다고 경고하는 것입니다. 가득 차면 넘치고, 너그러우면 인자해집니다. 감사할 줄 알고 분별력이 있어야 여유롭고 품위 있게 살 수 있습니다. 현실에 너무 많은 것을 요구하지 않아야 몸과 마음이 조화롭고 균형 잡히며 건강한 상태를 유지할 수 있습니다. 절제 카드의 의미는 2천 년 전 노자가 주장한 '무위이무불위'와 비슷합니다. 무욕무구해야 일을 잘 할 수 있으며, 탐욕스럽지 않고 오만하지 않아야 더 쉽게 성공을 얻을 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 16 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/악마.jpg" class="card-img-top" alt="악마" data-bs-toggle="modal" data-bs-target="#modalCard16">
+                <div class="card-body">
+                    <h5 class="card-title">악마</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 16 -->
+        <div class="modal fade" id="modalCard16" tabindex="-1" aria-labelledby="modalCardLabel16" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel16">악마 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/악마.jpg" alt="악마 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>구속, 무지, 물질주의, 절망적, 욕망, 중독</p>
+
+                            <h6>정방향</h6>
+                            <p>절망, 장애, 잘못된 길, 타락, 의지 박약, 욕망에 빠짐, 속임을 당함, 빠져나올 수 없는 절망적인 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>해방, 어둠에서 벗어남, 불순한 친구와 결별, 악을 거부함, 재기, 자유, 사랑에 전기가 옴</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>악마 카드는 타로 카드 중 '나쁜 카드' 중 하나로 인정받고 있습니다. 위협적인 눈빛의 악마가 높은 곳에서 세속의 사랑과 돈, 이익에 얽매인 남녀를 내려다보며 그들을 영혼의 타락으로 유혹합니다. 유혹, 중독, 타락이 악마 카드의 주요 의미입니다. 실제로 삶 속의 유혹은 어디에나 있습니다. 중요한 것은 당신이 그것을 견딜 수 있는지, 자제력과 자애로운 삶의 태도를 가지고 있는지입니다. 사슬이 연인들의 목에 느슨하게 걸려 있는 것은 그들이 기꺼이 유혹에 빠져 악마에게 노예가 되었음을 나타냅니다. 점을 볼 때 이 카드가 나오면 당신이 현재 어떤 나쁜 습관이나 악습에 빠져 헤어나오지 못하고 있음을 의미합니다. 이 카드는 당신에게 반드시 자기 성찰과 자제력을 유지해야 한다고 경고합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 17 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/탑.jpg" class="card-img-top" alt="탑" data-bs-toggle="modal" data-bs-target="#modalCard17">
+                <div class="card-body">
+                    <h5 class="card-title">탑</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 17 -->
+        <div class="modal fade" id="modalCard17" tabindex="-1" aria-labelledby="modalCardLabel17" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel17">탑 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/탑.jpg" alt="탑 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>급변, 재난, 파괴, 추락, 해방</p>
+
+                            <h6>정방향</h6>
+                            <p>재난, 신념의 붕괴, 파괴, 자업자득, 위험, 명예 손상, 예상치 못한 나쁜 소식, 실연</p>
+
+                            <h6>역방향</h6>
+                            <p>사고나 문제의 쉬운 해결, 작은 재난, 누명 쓰기, 후유증 남기기, 관계 파탄 직전</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>마치 맑은 하늘에서 벼락이 치듯이; 두 명의 오만한 자가 갑자기 높은 곳에서 떨어지고, 견고해 보이던 성도 무너질 듯합니다. 탑은 물질 세계를 나타내며, 세속적인 삶에서 '악'의 모든 측면을 대표합니다. 엄청난 파괴력을 가진 번개는 하늘의 징벌입니다. 하늘이 한번 화를 내면 인간은 작아 보입니다. 대아르카나 카드 중에서 탑 카드는 사람들이 가장 많이 이야기하는 '나쁜 카드' 중 하나로, 강한 종교적 의미를 지닌 카드입니다. 그림만 봐도 당사자에게 좋지 않은 심리적 영향을 줄 수 있습니다. 하지만 이 카드의 긍정적인 의미도 볼 수 있습니다. 파괴가 없다면 어떻게 건설이 있을 수 있겠습니까? 인간의 악이 바닥을 치면 선이 싹틀 것입니다. 이것이 영혼의 자연스러운 법칙입니다. 점을 볼 때 이 카드가 나오면, 일반적으로 당사자에게 쾌락에 빠지지 말고 영혼의 내적 성찰에 주의를 기울이라고 경고합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 18 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/별.jpg" class="card-img-top" alt="별" data-bs-toggle="modal" data-bs-target="#modalCard18">
+                <div class="card-body">
+                    <h5 class="card-title">별</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 18 -->
+        <div class="modal fade" id="modalCard18" tabindex="-1" aria-labelledby="modalCardLabel18" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel18">별 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/별.jpg" alt="별 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>희망, 관대함, 영감, 평온, 축복, 근심 없음</p>
+
+                            <h6>정방향</h6>
+                            <p>희망, 소원 성취, 평온하고 달콤한 삶, 창의력, 수준 향상, 삶의 윤택함, 임신</p>
+
+                            <h6>역방향</h6>
+                            <p>희망이 희미함, 뜻대로 되지 않음, 상황이 낙관적이지 않음, 허황된 생각, 분수에 맞지 않는 욕심, 얻을 수 없는 사랑을 추구</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>희망의 별이 푸른 밤하늘에서 빛나고, 순수한 여인이 사랑으로 가득 차 물로 대지를 적십니다. 생명이 여기서 시작되고, 생기 넘치는 활력을 발산합니다. 물은 생명의 근원이자 사랑을 키우는 원천이며, 끊임없는 생명력의 상징입니다. 밤하늘에 빛나는 별들, 물을 뿌리는 나체의 여인은 사람들의 영혼을 갑자기 맑고 투명하게 만들어, 모든 가식을 벗겨냅니다. 세상의 모든 아름다운 것들이 마치 한순간에 그들 앞에 나타난 것 같습니다. 별 카드는 악마 카드와 정반대의 카드입니다. 악마의 유혹은 사람을 타락으로 이끌지만, 별의 인도는 사람에게 희망을 주고 결국 순수한 삶으로 이끕니다. 점을 볼 때 정방향의 별 카드는 종종 당신이 희망의 길을 걷고 있음을 암시합니다. 이는 모든 부담을 내려놓고, 두려움과 의심을 버리고, 용감하게 전진하라고 당신에게 상기시킵니다. 왜냐하면 그 앞에는 당신이 동경하는 빛나는 곳이 있기 때문입니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 19 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/달.jpg" class="card-img-top" alt="달" data-bs-toggle="modal" data-bs-target="#modalCard19">
+                <div class="card-body">
+                    <h5 class="card-title">달</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 19 -->
+        <div class="modal fade" id="modalCard19" tabindex="-1" aria-labelledby="modalCardLabel19" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel19">달 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/달.jpg" alt="달 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>공포, 상상, 환상, 혼란, 불안, 변화무쌍, 고정관념</p>
+
+                            <h6>정방향</h6>
+                            <p>변덕, 혼란, 불안, 거짓말, 공포, 배신, 비밀 누설, 중상모략, 애매모호함, 연애 시 안정감 부족</p>
+
+                            <h6>역방향</h6>
+                            <p>오해 풀림, 변덕스러움, 장기적 안목, 어려움 제거, 거짓말 폭로, 불순한 감정에서 벗어남, 단련</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>타로 카드에서 달은 음성적 성질을 가진 카드입니다. 변덕스럽고, 엿보기를 좋아하며, 거짓말을 즐깁니다. 그 애매모호한 장막 아래에서 유혹은 어디에나 있고, 위험 또한 어디에나 있습니다. 그림 속 달에는 생각에 잠긴 듯한, 마녀와 비슷한 노파의 얼굴이 있습니다. 그녀는 음울하게 당신을 바라보고 있지만, 어떤 희망도 주려 하지 않습니다. 그녀의 시선은 당신의 영혼을 불안하게 만들고, 불길한 힘이 당신의 내면에서 솟아나 당신이 모르는 사이에 방향을 잃게 만듭니다. 그림의 아래쪽에 있는 두 마리의 개도 불안을 느끼고 달빛 아래에서 짖어대고 있으며, 물속의 전갈도 육지로 기어 올라옵니다. 전체 그림은 긴장감, 애매모호함, 혼란, 불안한 분위기로 가득 차 있습니다. 이 모든 것이 달이 일으킨 문제입니다. 서양 문화에서 달은 마법을 상징합니다. 점을 볼 때 달 카드를 만나면, 당사자가 현재 혼란스럽거나 잘못된 방향으로 가고 있을 수 있음을 경고하며, 제때에 올바른 방향을 찾고 목표를 정확히 해야 함을 알려줍니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 20 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/태양.jpg" class="card-img-top" alt="태양" data-bs-toggle="modal" data-bs-target="#modalCard20">
+                <div class="card-body">
+                    <h5 class="card-title">태양</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 20 -->
+        <div class="modal fade" id="modalCard20" tabindex="-1" aria-labelledby="modalCardLabel20" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel20">태양 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/태양.jpg" alt="태양 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>공포, 상상, 환상, 혼란, 불안, 변화무쌍, 고정관념</p>
+
+                            <h6>정방향</h6>
+                            <p>변덕, 혼란, 불안, 거짓말, 공포, 배신, 비밀 누설, 중상모략, 애매모호함, 연애 시 안정감 부족</p>
+
+                            <h6>역방향</h6>
+                            <p>오해 풀림, 변덕스러움, 장기적 안목, 어려움 제거, 거짓말 폭로, 불순한 감정에서 벗어남, 단련</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>타로 카드에서 달은 음성적 성질을 가진 카드입니다. 변덕스럽고, 엿보기를 좋아하며, 거짓말을 즐깁니다. 그 애매모호한 장막 아래에서 유혹은 어디에나 있고, 위험 또한 어디에나 있습니다. 그림 속 달에는 생각에 잠긴 듯한, 마녀와 비슷한 노파의 얼굴이 있습니다. 그녀는 음울하게 당신을 바라보고 있지만, 어떤 희망도 주려 하지 않습니다. 그녀의 시선은 당신의 영혼을 불안하게 만들고, 불길한 힘이 당신의 내면에서 솟아나 당신이 모르는 사이에 방향을 잃게 만듭니다. 그림의 아래쪽에 있는 두 마리의 개도 불안을 느끼고 달빛 아래에서 짖어대고 있으며, 물속의 전갈도 육지로 기어 올라옵니다. 전체 그림은 긴장감, 애매모호함, 혼란, 불안한 분위기로 가득 차 있습니다. 이 모든 것이 달이 일으킨 문제입니다. 서양 문화에서 달은 마법을 상징합니다. 점을 볼 때 달 카드를 만나면, 당사자가 현재 혼란스럽거나 잘못된 방향으로 가고 있을 수 있음을 경고하며, 제때에 올바른 방향을 찾고 목표를 정확히 해야 함을 알려줍니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 21 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/심판.jpg" class="card-img-top" alt="심판" data-bs-toggle="modal" data-bs-target="#modalCard21">
+                <div class="card-body">
+                    <h5 class="card-title">심판</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 21 -->
+        <div class="modal fade" id="modalCard21" tabindex="-1" aria-labelledby="modalCardLabel21" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel21">심판 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/심판.jpg" alt="심판 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>공포, 상상, 환상, 혼란, 불안, 변화무쌍, 고정관념</p>
+
+                            <h6>정방향</h6>
+                            <p>변덕, 혼란, 불안, 거짓말, 공포, 배신, 비밀 누설, 중상모략, 애매모호함, 연애 시 안정감 부족</p>
+
+                            <h6>역방향</h6>
+                            <p>오해 풀림, 변덕스러움, 장기적 안목, 어려움 제거, 거짓말 폭로, 불순한 감정에서 벗어남, 단련</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>타로 카드에서 달은 음성적 성질을 가진 카드입니다. 변덕스럽고, 엿보기를 좋아하며, 거짓말을 즐깁니다. 그 애매모호한 장막 아래에서 유혹은 어디에나 있고, 위험 또한 어디에나 있습니다. 그림 속 달에는 생각에 잠긴 듯한, 마녀와 비슷한 노파의 얼굴이 있습니다. 그녀는 음울하게 당신을 바라보고 있지만, 어떤 희망도 주려 하지 않습니다. 그녀의 시선은 당신의 영혼을 불안하게 만들고, 불길한 힘이 당신의 내면에서 솟아나 당신이 모르는 사이에 방향을 잃게 만듭니다. 그림의 아래쪽에 있는 두 마리의 개도 불안을 느끼고 달빛 아래에서 짖어대고 있으며, 물속의 전갈도 육지로 기어 올라옵니다. 전체 그림은 긴장감, 애매모호함, 혼란, 불안한 분위기로 가득 차 있습니다. 이 모든 것이 달이 일으킨 문제입니다. 서양 문화에서 달은 마법을 상징합니다. 점을 볼 때 달 카드를 만나면, 당사자가 현재 혼란스럽거나 잘못된 방향으로 가고 있을 수 있음을 경고하며, 제때에 올바른 방향을 찾고 목표를 정확히 해야 함을 알려줍니다.</p>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 22 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/세계.jpg" class="card-img-top" alt="세계" data-bs-toggle="modal" data-bs-target="#modalCard22">
+                <div class="card-body">
+                    <h5 class="card-title">세계</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 22 -->
+        <div class="modal fade" id="modalCard22" tabindex="-1" aria-labelledby="modalCardLabel22" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCardLabel22">세계 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/세계.jpg" alt="세계 카드">
+                        <div class="card-description">
+                            <!-- 카드 설명 추가 -->
+                            <h6>키워드</h6>
+                            <p>융합, 참여 시작, 성취, 이행, 달성, 완벽</p>
+
+                            <h6>정방향</h6>
+                            <p>성취, 행운, 밝은 미래, 아름다움, 명예, 해외여행, 고귀한 인격, 연인의 결실</p>
+
+                            <h6>역방향</h6>
+                            <p>미완성, 좌절, 준비 부족, 약속 이행 불가, 정신적 이완, 헛수고, 감정의 좌절</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>'21번' 카드는 대아르카나 카드의 마지막 카드입니다. 심판이 끝난 후, 악은 정산되고 인심은 선해지며 세계는 조화롭고 완벽해집니다. 이제부터는 세상에 더 이상 윤회도 없고 고난도 없으며, 모든 아름다운 소원이 이루어져 축하가 시작됩니다. 월계수 안에서 우아하게 춤추는 여신의 표정은 담담하고 편안한데, 이는 모든 소망이 이루어졌음을 암시합니다. 세계 카드에서 '세계'의 의미는 아름답고 조화로운 경지를 가리키며, 세속적인 세계가 영혼이 평온한 세계로 변했음을 의미합니다. 우리는 감사하는 마음을 가지고 전심전력을 다해야만 장애물을 제거하고 아름다운 새 세상을 찾을 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- 마이너아르카나 섹션 -->
+    <h3>마이너아르카나</h3>
+    <!-- 원드 슈트 -->
+    <h4>완드 슈트</h4>
+    <div class="row">
+        <div class="col-2">
+            <div class="card">
+                <img src="https://ifh.cc/g/DBHCj3.webp" class="card-img-top" alt="지팡이의 에이스" data-bs-toggle="modal" data-bs-target="#modalWands1">
+                <div class="card-body">
+                    <h5 class="card-title">지팡이의 에이스</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 원드 1 -->
+        <div class="modal fade" id="modalWands1" tabindex="-1" aria-labelledby="modalWandsLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalWandsLabel1">지팡이의 에이스 카드 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="https://ifh.cc/g/DBHCj3.webp" alt="지팡이의 에이스">
+                        <div class="card-description">
+
+                            <h6>키워드</h6>
+                            <p>창조력, 자신감, 열정, 용기, 영감, 행동 시작</p>
+
+                            <h6>정방향</h6>
+                            <p>공격성, 변혁과 용기, 중대한 시작, 기회 포착, 행운의 출발, 남자아이 출산, 새로운 연애</p>
+
+                            <h6>역방향</h6>
+                            <p>잘못된 시작, 희망이 보이지 않음, 취소, 장애, 건강 악화, 대인관계의 고민, 감정으로 인한 마음의 고통</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>모든 에이스 카드는 새로운 시작을 의미합니다. '1'은 시작이자 모든 것이며, 모든 에너지가 시작되는 근원입니다. 구름 속에서 강력한 손이 뻗어 나와 지팡이를 꽉 쥐고 있는 모습은 '행동하기만 하면 성공할 수 있다!'라고 말하는 것 같습니다. 그림에서 지팡이는 에너지를 나타내고, 흰색 광선은 권력의 지고함을, 멀리 보이는 성은 성공을 상징합니다. 지팡이의 에이스는 새로운 계획이나 행동의 좋은 시작을 나타냅니다. 점을 볼 때 지팡이의 에이스가 나타나면, 당사자가 새로운 기회에 직면해 있으며 열심히 노력하고 과감히 행동하면 성공할 수 있음을 암시합니다. 어떤 형태의 포기나 주저함도 바람직하지 않습니다. 역방향의 지팡이 에이스는 일반적으로 계획이 방해받거나 각종 형태의 지연 또는 장애를 암시합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 2 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/완드 2.jpg" class="card-img-top" alt="완드 2" data-bs-toggle="modal" data-bs-target="#modalWands2">
+                <div class="card-body">
+                    <h5 class="card-title">완드 2</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 2 -->
+        <div class="modal fade" id="modalWands2" tabindex="-1" aria-labelledby="modalWandsLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalWandsLabel2">완드 2 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/완드 2.jpg" alt="완드 2 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>개인의 매력, 혁신, 용기, 분석, 장악</p>
+
+                            <h6>정방향</h6>
+                            <p>권력 또는 위력, 부유함, 올바른 처신, 새로운 삶, 성공 획득, 의지 굳건함, 사랑의 결실</p>
+
+                            <h6>역방향</h6>
+                            <p>문제 또는 사고, 병, 한탄, 가난, 행동 제한, 비이성적 행동으로 인한 사랑의 어려움</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>빨간 옷을 입은 남자가 자신의 영토를 내려다보고 있으며, 그의 시선이 닿는 곳은 끝없는 바다입니다. 지팡이의 2는 대아르카나의 마법사 카드와 비슷하며, 강력한 자기 통제력과 무한한 에너지를 가지고 있습니다. 이는 개인 생명의 용기와 위대함을 칭찬하는 것이지만, 마법사의 천부적인 능력과는 달리 지팡이의 2에서의 에너지는 침략적이고 적대적인 의미를 띱니다. 그림 속 인물은 주교의 신분으로 보이며, 입고 있는 빨간 옷은 전투의 열정을 상징합니다. 오른쪽에 쇠고리로 벽에 묶인 지팡이는 의심할 여지없는 능력을 나타내며, 신비로운 수정구는 잠재력을 상징합니다. 점을 볼 때 지팡이의 2가 나타나면, 꿈이 노력을 통해 한 걸음씩 실현되고 있음을 의미하지만, 냉철하게 상황을 분석하고 흥분을 피해야 함을 주의해야 합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 3 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/완드 3.jpg" class="card-img-top" alt="완드 3" data-bs-toggle="modal" data-bs-target="#modalWands3">
+                <div class="card-body">
+                    <h5 class="card-title">완드 3</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 3 -->
+        <div class="modal fade" id="modalWands3" tabindex="-1" aria-labelledby="modalWandsLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalWandsLabel3">완드 3 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/완드 3.jpg" alt="완드 3 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>모험, 리더십, 선견지명, 여행, 새로운 출발</p>
+
+                            <h6>정방향</h6>
+                            <p>리더십, 성공, 지성, 순조로운 거래, 조화로운 행운, 어울리는 결혼, 물질적 기반을 전제로 한 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>고집, 운이 없음, 손실, 선견지명 부족, 합의 부족, 지연, 중단, 사랑에 문제</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>성공한 상인이 산 정상에 서서 화물을 가득 실은 배가 먼 항해를 떠나는 것을 바라보고 있습니다. 이 장면은 고대 해상 실크로드의 한 장면 같습니다. 잔잔한 바다는 상인의 여정이 순조로울 것임을 예고하며, 황금빛 배경은 밝은 전망을 상징합니다. 점술에서 지팡이 3의 정위는 종종 투자 전망이 좋고, 비즈니스 파트너를 신뢰할 수 있으며, 투자 프로젝트의 성공을 예견할 수 있음을 암시합니다. 또한 탐험 정신을 격려하는 의미도 있습니다. 감정 예측에 있어서 이 카드는 종종 성공할 수 있지만 결혼이나 사랑이 물질적 영향을 많이 받을 수 있음을 암시합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 4 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/완드 4.jpg" class="card-img-top" alt="완드 4" data-bs-toggle="modal" data-bs-target="#modalWands4">
+                <div class="card-body">
+                    <h5 class="card-title">완드 4</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 4 -->
+        <div class="modal fade" id="modalWands4" tabindex="-1" aria-labelledby="modalWandsLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalWandsLabel4">완드 4 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/완드 4.jpg" alt="완드 4 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>축하, 열정, 자유, 도착, 완성, 귀가</p>
+
+                            <h6>정방향</h6>
+                            <p>번영, 축하, 긍정적 상승, 가족, 자유, 안정, 즐거운 여유, 로맨틱</p>
+
+                            <h6>역방향</h6>
+                            <p>평온 상실, 모호함, 약함, 성공 전의 작은 좌절, 대인 관계 나쁨, 불안정한 연애</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>꽃을 든 두 여성이 즐겁게 춤을 추고, 멀리서 아이들이 즐겁게 놀고 있으며, 모든 곳이 조화롭고 번영하며 풍요를 축하하는 모습입니다. 그림에서 네 개의 큰 지팡이가 질서 있게 땅에 서 있어 문 모양을 이루고 있으며, 이는 안정과 안전을 상징합니다. 지팡이에 감긴 풍성한 열매가 달린 덩굴은 번영과 풍요를 상징합니다. 뒤에 있는 웅장한 성은 걱정 없는 삶과 평화로운 정착을 암시합니다. 지팡이 4는 의미가 명확하며, 긍정적이고 화목한 삶의 분위기를 줍니다. 지팡이 3이 아직 탐험의 위험을 가지고 있다면, 지팡이 4는 탐험이 이미 수확을 얻었다는 증거입니다. 역위의 지팡이 4는 구체적인 예측 문제와 전체적인 상황에 따라 해석해야 합니다. 때로는 정위와 반대의 의미를 가지기도 하고, 때로는 정위와 같은 의미를 가질 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 5 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/완드 5.jpg" class="card-img-top" alt="완드 5" data-bs-toggle="modal" data-bs-target="#modalWands5">
+                <div class="card-body">
+                    <h5 class="card-title">완드 5</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 5 -->
+        <div class="modal fade" id="modalWands5" tabindex="-1" aria-labelledby="modalWandsLabel5" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalWandsLabel5">완드 5 카드의 의미</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/완드 5.jpg" alt="완드 5 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>다툼, 격전, 경쟁, 충돌, 리더십 부재</p>
+
+                            <h6>정방향</h6>
+                            <p>어려움을 겪은 후의 성공, 강한 적, 충돌, 왕성한 투지, 선택의 어려움, 연인과의 다툼</p>
+
+                            <h6>역방향</h6>
+                            <p>불공정한 경쟁, 사기, 혼란, 복잡함, 분쟁, 소송 가능성, 연인과의 오해</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>"지팡이 5는 모의 전투입니다." 정말 그렇습니다. 그림에서 다섯 명의 남자가 지팡이를 들고 싸우고 있지만, 칼과 검이 부딪치는 것 같아 보여도 실제로는 피를 흘리지 않습니다. 다섯 남자의 장비는 모두 비슷하고 비슷한 스타일의 옷을 입고 있어, 우리는 이를 대등하고 공정한 경쟁으로 이해할 수 있습니다. 정위의 지팡이 5는 대부분 경쟁 상태를 묘사하며, 공정한 경쟁이거나 외부적인 경쟁과 내면의 갈등도 이 카드의 의미에 포함됩니다. 다른 사람과의 투쟁, 자기 내면의 갈등 모두가 포함됩니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 카드 6 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 6.jpg" class="card-img-top" alt="완드 6" data-bs-toggle="modal" data-bs-target="#modalWands6">
+            <div class="card-body">
+                <h5 class="card-title">완드 6</h5>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 모달 창 6 -->
+    <div class="modal fade" id="modalWands6" tabindex="-1" aria-labelledby="modalWandsLabel6" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel6">완드 6 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 6.jpg" alt="완드 6 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>승리, 자부심, 칭찬, 영웅</p>
+
+                        <h6>정방향</h6>
+                        <p>자신감 넘침, 승리 획득, 개선, 명예와 꽃, 과거의 영광, 사랑의 결실</p>
+
+                        <h6>역방향</h6>
+                        <p>나쁜 소식, 두려움, 상대방의 승리, 부정직한 거래, 늦은 수입, 조연, 사랑의 실패</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지팡이 6은 대 아르카나의 전차 카드를 떠올리게 합니다. 전차 카드와 비교하면, 지팡이 6의 남자의 승리는 더 구체적이고 세속적이며, 일상 생활에서 강자의 훌륭한 이미지입니다. 그림에서 젊은 남자는 승리의 월계관을 쓰고 흰 말을 타고 개선하고 있으며, 꽃과 박수가 그를 둘러싸고 있습니다. 전쟁에서 승리했기 때문에 그는 군대의 존경을 받았고, 이제 왕의 포상을 받으러 갈 수 있습니다. 흰 전투마와 입고 있는 녹색 로브는 힘을 나타내고, 붉은 외투는 그의 열정과 투지를 상징합니다.</p>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 카드 7 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 7.jpg" class="card-img-top" alt="완드 7" data-bs-toggle="modal" data-bs-target="#modalWands7">
+            <div class="card-body">
+                <h5 class="card-title">완드 7</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 7 -->
+    <div class="modal fade" id="modalWands7" tabindex="-1" aria-labelledby="modalWandsLabel7" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel7">완드 7 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 7.jpg" alt="완드 7 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>진취성, 확신, 도전, 용기, 숨은 적</p>
+
+                        <h6>정방향</h6>
+                        <p>장애물을 극복하기 위한 노력, 적을 이기는 것, 정의로운 입장, 유리한 상황, 투지로 가득 참, 사랑을 위한 노력</p>
+
+                        <h6>역방향</h6>
+                        <p>의심 발생, 패배, 혼란, 결단력 부족, 나약한 사랑</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>진취성과 개척 정신은 모든 지팡이 카드의 핵심입니다. 지팡이 7에서 보이듯이, 녹색 옷을 입은 남자가 울창한 산꼭대기에 서 있습니다. 그의 앞에는 그의 전진을 방해하는 6개의 지팡이가 있지만, 남자는 전혀 두려워하지 않습니다. 그의 머리카락은 날리고 표정은 단호하며, 적에 맞서 힘차게 싸웁니다. 지팡이 7의 남자는 무모한 사람이 아닙니다. 그는 적극적으로 공격하는 것처럼 보이지만, 실제로는 더 많은 방어 자세를 취하고 있어 진퇴를 적절히 조절합니다. 이는 그의 이성을 더욱 잘 보여줍니다. 정의가 올 때 그는 용감하게 전진하고, 적의 공격을 받아도 전혀 두려워하지 않습니다.</p>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 8 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 8.jpg" class="card-img-top" alt="완드 8" data-bs-toggle="modal" data-bs-target="#modalWands8">
+            <div class="card-body">
+                <h5 class="card-title">완드 8</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 8 -->
+    <div class="modal fade" id="modalWands8" tabindex="-1" aria-labelledby="modalWandsLabel8" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel8">완드 8 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 8.jpg" alt="완드 8 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>신속한 행동, 소식, 결말, 급격한 변화</p>
+
+                        <h6>정방향</h6>
+                        <p>신속한 행동, 과감한 결정, 즉각적인 행동, 한 번에 힘차게, 활발함, 한눈에 반함</p>
+
+                        <h6>역방향</h6>
+                        <p>충동적, 고려 부족, 논쟁, 무모함, 가정 불화, 행동 지연, 좌절, 연애 기회 상실</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지팡이 8은 자유분방한 낭만적인 분위기를 줍니다. 푸른 하늘 아래, 완만한 경사면에 강이 조용히 흐르고, 8개의 지팡이가 일제히 물을 가르며 날아갑니다. 지팡이 8은 신속한 행동의 상징이며, 때로는 빠른 종결을 상징하기도 합니다. 어쨌든 지팡이 8은 강한 표현 욕구를 가지고 있으며, 자신을 표현하고 보여주고 싶은 마음이 절실합니다. 토끼처럼 빠르게 움직이며, 이는 곧 시작할 사업의 성공 속도가 당신의 상상을 뛰어넘을 것이며, 승리할 기회가 매우 크다는 것을 의미합니다. 만약 어떤 일의 종결 여부를 예측한다면, 당사자가 신속하게 문제를 해결할 것임을 예시합니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 9 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 9.jpg" class="card-img-top" alt="완드 9" data-bs-toggle="modal" data-bs-target="#modalWands9">
+            <div class="card-body">
+                <h5 class="card-title">완드 9</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 9 -->
+    <div class="modal fade" id="modalWands9" tabindex="-1" aria-labelledby="modalWandsLabel9" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel9">완드 9 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 9.jpg" alt="완드 9 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>방어, 의지, 굳건함, 신중함, 조심</p>
+
+                        <h6>정방향</h6>
+                        <p>힘, 준비 완료, 불굴의 의지, '아니오'라고 말하기를 거부함, 숨겨진 실력, 기회를 기다림, 감정의 승화</p>
+
+                        <h6>역방향</h6>
+                        <p>역경, 헛수고, 비현실적, 의지 약화, 운이 없음, 능력 부족, 감정에 대한 자신감 부족</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지친 전사가 머리에 붕대를 감고 경계하듯 무언가를 기다리고 있습니다. 그의 뒤에는 8개의 지팡이가 울타리처럼 그가 열심히 만든 보금자리를 둘러싸고 있습니다. 이전에 전사는 이미 많은 시련을 겪었으며, 그의 머리의 붕대가 그 증거입니다. 이는 우리의 삶과 같습니다. 상처받지 않은 사람은 거의 없지만, 상처를 겪어야만 우리는 빨리 성숙해지고 삶의 시련에 대처할 수 있습니다. 또한 좌절을 겪어야만 우리는 어떻게 침착하게 좌절에 대응할 수 있는지 알게 됩니다. 이것이 바로 지팡이 9의 정신적 함의입니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 10 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 10.jpg" class="card-img-top" alt="완드 10" data-bs-toggle="modal" data-bs-target="#modalWands10">
+            <div class="card-body">
+                <h5 class="card-title">완드 10</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 10 -->
+    <div class="modal fade" id="modalWands10" tabindex="-1" aria-labelledby="modalWandsLabel10" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel10">완드 10 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 10.jpg" alt="완드 10 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>과도한 표현, 투쟁, 인내, 압박, 과도한 책임</p>
+
+                        <h6>정방향</h6>
+                        <p>성공을 위해 대가를 치러야 함, 강한 신념, 책임감, 고된 노력, 정서적 불안, 고난 끝에 맺어지는 사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>과도한 압박, 붕괴 직전, 지속 불가능, 포기 선택, 부정직, 자신감 부족으로 인한 사랑 포기</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>그림 속의 남자는 현대인의 생활 상태를 완벽하게 보여줍니다. 우리는 남자가 앞으로 나아가는 걸음이 확고하다는 것을 볼 수 있습니다. 그의 어깨에는 천 근의 무게가 있지만, 가슴 속에는 큰 포부가 있습니다. 그는 목표에 거의 다다랐습니다. 지팡이 10은 '아무도 쉽게 성공할 수 없다'는 것을 나타내지만, 동시에 우리는 남자가 약간 부담스러워 보인다는 것을 알 수 있습니다. 이렇게 힘들다면 왜 그 짐을 내려놓고 쉬지 않을까요? 이는 우리의 삶과 같습니다. 매일 바쁘게 지내지만, 사실 우리가 추구하는 것은 단지 외적인 것들일 뿐입니다. 명예와 이익을 너무 중요하게 여기고 내면의 추구를 무시하는 것은 정말로 본말이 전도된 것입니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 카드 11 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 시종.jpg" class="card-img-top" alt="완드의 시종" data-bs-toggle="modal" data-bs-target="#modalWands11">
+            <div class="card-body">
+                <h5 class="card-title">완드의 시종</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 11 -->
+    <div class="modal fade" id="modalWands11" tabindex="-1" aria-labelledby="modalWandsLabel11" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel11">완드의 시종 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 시종.jpg" alt="완드의 시종 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>창의적인, 자신감 있는, 열정적인, 용감한, 진지한</p>
+
+                        <h6>정방향</h6>
+                        <p>정직, 좋은 소식, 새로운 시작, 훌륭한 조력자, 순진함, 정직, 활발하고 사랑스러움, 맹목적인 사랑 또는 연상연하 연애</p>
+
+                        <h6>역방향</h6>
+                        <p>나쁜 소식, 험담, 불안정, 미숙함, 혼란, 걱정스러움, 사고력과 판단력 부족</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지팡이 시종은 금색 옷을 입고 있어 좋은 가정 환경과 우월한 미래를 상징합니다. 그는 마치 장난꾸러기 같으며, 대 아르카나의 바보 카드와 비슷합니다. 열정적이고 활발하며, 주목받기를 좋아하고 자유분방합니다. 자신의 단점조차도 다른 사람들의 관심을 끌고 싶어 합니다. 미숙한 시종은 강한 과시욕을 가지고 있습니다. 그는 매력적인 소년이며, 그의 순수함은 명백합니다. 그의 매력은 바로 그의 어리숙함과 순진함에서 비롯됩니다. 일상생활에서 그는 다른 사람들의 용서와 사랑을 받으며, 쉽게 젊은 여성들의 시선을 끌 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 12 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 기사.jpg" class="card-img-top" alt="완드의 기사" data-bs-toggle="modal" data-bs-target="#modalWands12">
+            <div class="card-body">
+                <h5 class="card-title">완드의 기사</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 12 -->
+    <div class="modal fade" id="modalWands12" tabindex="-1" aria-labelledby="modalWandsLabel12" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel12">완드의 기사 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 기사.jpg" alt="완드의 기사 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>매력적인, 피상적인, 모험을 좋아하는, 자신감 있는, 열정적인</p>
+
+                        <h6>정방향</h6>
+                        <p>모험적이면서도 약간 경솔함, 행운, 매력, 승진, 열정과 자신감, 순조로운 경력, 성격이 급함, 여성들에게 인기 있음</p>
+
+                        <h6>역방향</h6>
+                        <p>준비 부족, 진전 중단, 경력상의 잠재적 좌절, 피상적 갈등, 별거 또는 관계 파탄</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지팡이 기사는 풍차를 악마로 착각한 돈키호테와 매우 닮았습니다. 그는 진취적이지만, 그가 볼 수 있는 적은 실제로 존재하지 않습니다. 적이 없다면 그는 상상의 적과 싸울 것입니다. 그의 이상은 정의를 수호하고 악을 물리치는 것입니다. 환상이든 현실이든 전쟁은 그의 삶의 주요 내용입니다. 사실 이것이 바로 지팡이 기사의 가치 있는 점입니다. 그의 용기와 열정은 종종 사람들을 감탄하게 만듭니다. 만약 혼란한 시대에 있다면, 아마도 정말로 놀라운 업적을 이룰 수 있을 것입니다! 동시에 우리는 지팡이 기사가 장군이 아니라는 점에 주목해야 합니다. 때때로 그는 무모하고 충동적일 수 있으며, 성격도 그리 좋지 않습니다. 점을 볼 때 지팡이 기사를 만나면 이 카드를 객관적으로 봐야 합니다. 한편으로는 당사자의 모험 정신과 용기를 인정하고, 다른 한편으로는 당사자에게 이성적이고 냉철하게 행동하라고 상기시켜 줍니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 13 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 퀸.jpg" class="card-img-top" alt="완드의 여왕" data-bs-toggle="modal" data-bs-target="#modalWands13">
+            <div class="card-body">
+                <h5 class="card-title">완드의 여왕</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 13 -->
+    <div class="modal fade" id="modalWands13" tabindex="-1" aria-labelledby="modalWandsLabel13" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel13">완드의 여왕 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 퀸jpg" alt="완드의 여왕 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>매력적인, 즐거운, 한결같은, 자신감 있는, 밝은, 열정적인</p>
+
+                        <h6>정방향</h6>
+                        <p>신뢰할 만함, 열정적이고 따뜻함, 매력, 결단력과 능력, 우아하고 독립적임, 통제력 있음, 성숙한 연애와 결혼</p>
+
+                        <h6>역방향</h6>
+                        <p>감정적임, 고지식함, 질투심, 독단적임, 오만함, 발전을 방해함, 연애 시 상대방을 당황하게 함</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지팡이 여왕은 고귀하고 우아하며, 빛나는 모습을 하고 있습니다. 공정하고 침착하며, 타고난 유머 감각을 가지고 있습니다. 동시에 용기와 친절한 태도가 부족하지 않아 항상 사람들에게 따뜻함과 활력을 줄 수 있습니다. 하지만 동시에 높은 지위에 있는 그녀는 지나치게 독립적인 처세 방식과 모든 면에서 강해 보이려는 태도 때문에 사람들 사이에서 고립될 수 있습니다. 특히 감정 문제를 다룰 때 너무 신중하고 통제욕이 강해서 때때로 사람들에게 존경받지만 친근하지 않게 느껴질 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 14 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/완드 킹.jpg" class="card-img-top" alt="완드의 국왕" data-bs-toggle="modal" data-bs-target="#modalWands14">
+            <div class="card-body">
+                <h5 class="card-title">완드의 국왕</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 14 -->
+    <div class="modal fade" id="modalWands14" tabindex="-1" aria-labelledby="modalWandsLabel14" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWandsLabel14">완드의 국왕 카드의 의미</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/완드 킹.jpg" alt="완드의 국왕 카드">
+                    <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>창의적인, 격려하는, 용감한, 능력 있는</p>
+
+                        <h6>정방향</h6>
+                        <p>침착함, 강인함, 교양 있음, 지식이 풍부함, 좋은 아버지, 정직함, 연인에게 안정감을 주지만 통제욕이 강함</p>
+
+                        <h6>역방향</h6>
+                        <p>지나치게 엄격함, 까다로움, 독단적임, 태도가 오만함, 체면을 중시함, 계획이 지연됨, 연인이 약간 두려워함</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>지팡이 국왕에게 권력, 영토, 신하는 그의 전부입니다. 평생 동안 그는 자신의 왕국을 어떻게 건설할지 고민합니다. 그는 이를 할 수 있는 능력이 있습니다. 그림에서 국왕은 언제든 자리에서 일어날 준비가 된 것처럼 보이는데, 이는 그가 강한 행동력을 가지고 있음을 나타냅니다. 동시에 국왕은 결단력 있고 지혜와 용기가 뛰어나며, 안정되고 관대합니다. 이로 인해 그가 하는 일은 모두 순조롭게 진행됩니다. 연애 운을 점칠 때, 국왕 카드는 책임감과 안정감을 상징하지만, 때로는 감정적 냉담함을 나타내기도 합니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h4>컵 슈트</h4>
+    <!-- 카드 1 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/컵 1 에이스.jpg" class="card-img-top" alt="컵 1 에이스" data-bs-toggle="modal" data-bs-target="#modalCups1">
+            <div class="card-body">
+                <h5 class="card-title">성배의 에이스</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 1 -->
+    <div class="modal fade" id="modalCups1" tabindex="-1" aria-labelledby="modalCupsLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCupsLabel1">성배의 에이스</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/컵 1 에이스.jpg" alt="컵 1 에이스 카드">
+                    <div class="card-description">
+
+                    <h6>키워드</h6>
+                    <p>감정의 작용, 친밀함, 직관, 사랑, 감정 표현</p>
+
+                    <h6>정방향</h6>
+                    <p>대담한 추구, 순조로운 결실, 행복감, 사랑의 싹틈, 친밀함, 직관, 사랑, 감정 표현</p>
+
+                    <h6>역방향</h6>
+                    <p>위선, 사랑의 부족, 불확실한 관계, 기쁨 속의 근심, 불행, 실망, 짝사랑</p>
+
+                    <h6>카드의 의미</h6>
+                    <p>성배는 원래 예수의 최후의 만찬에서 사용된 잔을 의미하며, 예수가 십자가에 못 박힌 후 성배는 예수의 피를 담는 데 사용되었습니다. 따라서 성배는 신성한 것이며, 인간의 감정과 영혼 역시 신성합니다. 영혼의 각성보다 더 중요한 것은 없습니다. 성배의 에이스는 종종 새로운 감정이나 우정의 시작을 상징하며, 모든 것이 아름답고 따뜻하며 희망으로 가득 차 있습니다. 그림에서 흰 비둘기는 가톨릭에서 성령을 상징하며, 그 입에 물고 있는 것은 예수의 몸이 변한 성체입니다. 잔에서 넘치는 다섯 줄기의 물은 인간의 다섯 가지 감각을 나타내며, 수련은 인간 영혼의 각성을 상징합니다. 점을 볼 때 질문자의 문제가 감정과 관련이 없다면, 성배의 에이스는 문제 해결 시 적절한 감정 투자가 필요하다는 것을 상기시킵니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 2 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/컵 2.jpg" class="card-img-top" alt="컵 2" data-bs-toggle="modal" data-bs-target="#modalCups2">
+            <div class="card-body">
+                <h5 class="card-title">성배 2</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 2 -->
+    <div class="modal fade" id="modalCups2" tabindex="-1" aria-labelledby="modalCupsLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCupsLabel2">성배 2</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/컵 2.jpg" alt="컵 2 카드">
+                    <div class="card-description">
+
+                    <h6>키워드</h6>
+                    <p>관계 형성, 매력, 신뢰 추구, 진정한 사랑, 평등</p>
+
+                    <h6>정방향</h6>
+                    <p>다정다감, 아름다운 우정, 주변 사람들의 결혼, 화목, 마음이 통하는 연인</p>
+
+                    <h6>역방향</h6>
+                    <p>다툼과 오해, 의심, 질투, 대립, 이혼, 거짓된 마음</p>
+
+                    <h6>카드의 의미</h6>
+                    <p>화관을 쓴 남녀가 성배를 들고 서로를 깊이 바라보고 있습니다. 그림에서 단정한 여인은 음성의 상징이며, 남자는 몸을 앞으로 기울여 상대적으로 적극적인 모습으로 양성을 상징합니다. 전체적인 그림은 '봉황이 구애하는' 느낌을 줍니다. 처음 이 카드를 보면 대 아르카나의 연인 카드를 떠올리기 쉽지만, 연인 카드가 강렬한 성과 욕망의 분위기를 풍기는 반면, 성배의 2는 첫사랑과 같은 느낌으로 남녀 간의 감정적 교류만 있으며, 설렘의 감정이 그들을 둘러싸고 있는 다정다감한 감정의 경향을 나타냅니다. 점을 볼 때 감정 문제와 관련이 있다면, 이 카드는 주변 사람들과의 소통, 대화, 우호적인 협력의 중요성을 상기시킵니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 3 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/컵 3.jpg" class="card-img-top" alt="컵 3" data-bs-toggle="modal" data-bs-target="#modalCups3">
+            <div class="card-body">
+                <h5 class="card-title">성배 3</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 3 -->
+    <div class="modal fade" id="modalCups3" tabindex="-1" aria-labelledby="modalCupsLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCupsLabel3">성배 3</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/컵 3.jpg" alt="컵 3 카드">
+                    <div class="card-description">
+
+                    <h6>키워드</h6>
+                    <p>기쁨, 함께 축하하기, 풍성한 수확, 번영 느끼기, 단체, 우정</p>
+
+                    <h6>정방향</h6>
+                    <p>협력, 결정의 필요성, 축하할 만한 일, 화해, 우정, 치유, 행복한 결혼, 연인의 화해</p>
+
+                    <h6>역방향</h6>
+                    <p>가까이하기 어려움, 방탕함, 과도함, 즐거움 끝의 슬픔, 폭음폭식, 지연, 연인 간의 권태</p>
+
+                    <h6>카드의 의미</h6>
+                    <p>화관을 쓴 세 여인이 원을 이루어 성배를 높이 들고 있으며, 전체적인 그림은 수확 축제의 분위기를 풍깁니다. 세 여인의 옷차림은 각기 다르지만 비슷한 스타일이며, 머리 색깔도 다르지만 모두 기쁘고 만족스러운 표정을 짓고 있어 그들 사이의 평등한 관계를 나타냅니다. 이는 세상이 얼마나 아름답고 조화로울 수 있는지, 우리가 사는 곳이 얼마나 희망으로 가득 찬 곳인지를 상기시킵니다. 성배의 3은 주로 감정과 관련된 단체를 가리키며, 예를 들어 학우, 가족 또는 가족 기업 등을 의미합니다. 또한 축하의 의미도 강하게 담고 있어 결혼식, 축하 연회, 감정을 기반으로 한 모임 등을 나타냅니다. 점을 볼 때 성배의 3은 질문자가 사적인 마음을 버리고 진정한 협력만이 윈-윈 할 수 있다는 것을 의미합니다. 또한 우정과 단결을 강조하면서도 때때로 경쟁과 대치의 의미도 내포하고 있습니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 카드 4 -->
+    <div class="col-2">
+        <div class="card">
+            <img src="/images/컵 4.jpg" class="card-img-top" alt="컵 4" data-bs-toggle="modal" data-bs-target="#modalCups4">
+            <div class="card-body">
+                <h5 class="card-title">성배 4</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 창 4 -->
+    <div class="modal fade" id="modalCups4" tabindex="-1" aria-labelledby="modalCupsLabel4" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCupsLabel4">성배 4</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="/images/컵 4.jpg" alt="컵 4 카드">
+                    <div class="card-description">
+
+                    <h6>키워드</h6>
+                    <p>자아, 명상, 냉담, 선택, 관망, 불만족</p>
+
+                    <h6>정방향</h6>
+                    <p>기회 상실, 자신감 부족, 거절, 냉담, 권태, 심신의 피로, 연애 기회 상실 또는 외도</p>
+
+                    <h6>역방향</h6>
+                    <p>새로운 인간관계, 활력, 새로운 기회, 저조한 시기 탈출, 새로운 연애</p>
+
+                    <h6>카드의 의미</h6>
+                    <p>성배의 4 그림에서 남자는 나무 아래 앉아 있지만 기운이 없어 보입니다. 그는 눈을 꼭 감고 지루해하며, 구름 속에서 친절하게 내밀어진 손에 든 성배에도 무반응입니다. 심지어 앞에 있는 세 개의 성배도 무시합니다. 일반적으로 앞의 세 개의 성배는 과거의 경험을 상징하고, 구름 속의 성배는 희망을 상징합니다. 아마도 과거의 경험 때문에 그는 미래가 희망 없다고 느끼거나, 과거의 슬픈 일에 빠져 새로운 희망에 대해 불신하는 태도를 취하고 있을 수 있습니다. 그에게 삶은 무거운 짐이며, 상처 때문에 매우 경계하고 있어 삶에 무관심한 태도를 취하려고 노력합니다. 점을 볼 때, 성배의 4는 때때로 외도와 새로운 기회의 도래를 나타내기도 하며, 또는 새로운 기회가 오기 전의 균형 잡기를 암시하기도 합니다.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 카드 5 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 5.jpg" class="card-img-top" alt="컵 5" data-bs-toggle="modal" data-bs-target="#modalCups5">
+                <div class="card-body">
+                    <h5 class="card-title">성배 5</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 5 -->
+        <div class="modal fade" id="modalCups5" tabindex="-1" aria-labelledby="modalCupsLabel5" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabel5">성배 5</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 5.jpg" alt="컵 5 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>손실, 유감, 죽음, 실망, 비관, 제자리걸음</p>
+
+                        <h6>정방향</h6>
+                        <p>후회, 침체, 고통, 의심, 결함, 무의미한 교제, 환멸감, 새로운 삶의 가능성, 사랑의 좌절</p>
+
+                        <h6>역방향</h6>
+                        <p>옛 친구의 귀환, 재기, 아름다움의 재현, 자신감 회복, 옛 사랑의 재점화, 새로운 연애</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>성배 4가 무관심과 권태를 나타낸다면, 성배 5는 더 강렬한 감정인 절망과 슬픔을 나타냅니다. 이 두 카드의 출현은 인생의 저조기를 의미할 수 있습니다. 그림은 어두운 하늘로 덮여 있고, 한 남자가 검은 망토를 입고 고개를 깊이 숙이고 있습니다. 고통을 표현할 길이 없고, 내면의 낙담이 극에 달했습니다. 남자 앞에 있는 세 개의 성배는 쓰러져 있지만, 그의 뒤에는 두 개의 성배가 서 있습니다. 하지만 그는 자신의 내면 세계에만 빠져 있어 삶에 대한 절망으로 인해 그의 사고가 막다른 골목에 빠졌고, 뒤돌아볼 생각조차 없습니다. 자세히 보면 그가 강 위의 하얀 작은 다리만 건너면 성에 도착할 수 있다는 것을 알 수 있습니다. 그곳은 그의 영혼의 안식처이며, 평화롭고 행복한 삶을 다시 살 수 있게 해줄 것입니다. 따라서 점을 볼 때 성배 5가 나타나면, 슬픔과 고통의 상황을 의미함과 동시에 행동만 하면 삶의 평탄한 길로 갈 수 있다는 것을 암시합니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 6 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 6.jpg" class="card-img-top" alt="컵 6" data-bs-toggle="modal" data-bs-target="#modalCups6">
+                <div class="card-body">
+                    <h5 class="card-title">성배 6</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 6 -->
+        <div class="modal fade" id="modalCups6" tabindex="-1" aria-labelledby="modalCupsLabel6" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabel6">성배 6</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 6.jpg" alt="컵 6 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>선의, 회상, 어린 시절, 순수, 의지, 안전, 안정</p>
+
+                        <h6>정방향</h6>
+                        <p>즐거운 기억, 따뜻함, 회상에 빠짐, 재회, 어린 시절 경험, 추억, 향수, 옛 사랑의 그리움</p>
+
+                        <h6>역방향</h6>
+                        <p>행운의 감소, 미래에 대한 관심, 과거와의 작별, 원대한 안목, 안전감 부족, 새로운 연애</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>두 어린아이의 모습은 우리에게 고향에서 '소꿉놀이'하던 어린 시절을 떠올리게 합니다. 성배에는 꽃이 가득 차 있고, 아름다운 전원 풍경이 펼쳐져 있습니다. 성배 6의 동화 같은 색채는 우리의 강한 향수 감정을 불러일으킵니다. 그곳은 우리의 뿌리이며, 우리의 발걸음을 끌어당깁니다. 추억과 향수는 성배 6의 주요 의미로, 과거와 관련된 사람과 물건을 나타내며, 짙은 향수와 떨쳐버릴 수 없는 향수 정서를 나타냅니다. 그림 속 소년과 소녀가 꽃을 바치는 세부 묘사는 관대함과 선물의 표현으로, 주고받음과 진실함이 우정을 증진시킬 수 있다는 것을 일깨워줍니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 7 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 7.jpg" class="card-img-top" alt="컵 7" data-bs-toggle="modal" data-bs-target="#modalCups7">
+                <div class="card-body">
+                    <h5 class="card-title">성배 7</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 7 -->
+        <div class="modal fade" id="modalCups7" tabindex="-1" aria-labelledby="modalCupsLabel7" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabel7">성배 7</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 7.jpg" alt="컵 7 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>환상, 낭비, 선택, 꿈, 욕망</p>
+
+                        <h6>정방향</h6>
+                        <p>선택의 기로, 실제 행동 부족, 백일몽, 반복, 과도한 욕망, 사기, 불순하거나 일방적인 사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>결심, 현명한 선택, 가까운 시일 내 목표 달성, 강한 의지, 사랑의 고통 끝 달콤함</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>아름다운 것들이 구름 위에 떠 있고, 그림 속 인물은 검은 실루엣으로만 보이지만, 그의 탐욕은 명백히 보이며, 그의 두려움 또한 마찬가지입니다. 성배 7의 주요 의미는 욕망과 갈망으로, 얻을 수 없는 것에 대한 강한 열망을 나타냅니다. 다시 말해 비현실적이고, 환상적이며, 백일몽을 꾸는 것입니다. 성배 7의 확장된 의미는 선택입니다. 그림 속 남자처럼 7개의 성배 앞에서 각각이 유혹으로 가득 차 있지만, 그가 어떤 선택을 해야 할지 모르는 상황을 나타냅니다. 또 다른 확장된 의미는 불순하고 퇴폐적인 생활입니다. 점을 볼 때 성배 7이 나타나면, 당사자에게 삶의 기본 논리에 주의를 기울이고, 실제 행동을 취해야 하며, 생각만 거대하고 행동은 작은 사람이 되지 말라는 경고일 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 8 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 8.jpg" class="card-img-top" alt="컵 8" data-bs-toggle="modal" data-bs-target="#modalCups8">
+                <div class="card-body">
+                    <h5 class="card-title">성배 8</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 8 -->
+        <div class="modal fade" id="modalCups8" tabindex="-1" aria-labelledby="modalCupsLabel8" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabel8">성배 8</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 8.jpg" alt="컵 8 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>환상, 낭비, 선택, 꿈, 욕망</p>
+
+                        <h6>정방향</h6>
+                        <p>선택의 기로, 실제 행동 부족, 백일몽, 반복, 과도한 욕망, 사기, 불순하거나 일방적인 사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>결심, 현명한 선택, 가까운 시일 내 목표 달성, 강한 의지, 사랑의 고통 끝 달콤함</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>아름다운 것들이 구름 위에 떠 있고, 그림 속 인물은 검은 실루엣으로만 보이지만, 그의 탐욕은 명백히 보이며, 그의 두려움 또한 마찬가지입니다. 성배 7의 주요 의미는 욕망과 갈망으로, 얻을 수 없는 것에 대한 강한 열망을 나타냅니다. 다시 말해 비현실적이고, 환상적이며, 백일몽을 꾸는 것입니다. 성배 7의 확장된 의미는 선택입니다. 그림 속 남자처럼 7개의 성배 앞에서 각각이 유혹으로 가득 차 있지만, 그가 어떤 선택을 해야 할지 모르는 상황을 나타냅니다. 또 다른 확장된 의미는 불순하고 퇴폐적인 생활입니다. 점을 볼 때 성배 7이 나타나면, 당사자에게 삶의 기본 논리에 주의를 기울이고, 실제 행동을 취해야 하며, 생각만 거대하고 행동은 작은 사람이 되지 말라는 경고일 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 9 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 9.jpg" class="card-img-top" alt="컵 9" data-bs-toggle="modal" data-bs-target="#modalCups9">
+                <div class="card-body">
+                    <h5 class="card-title">성배 9</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 9 -->
+        <div class="modal fade" id="modalCups9" tabindex="-1" aria-labelledby="modalCupsLabel9" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabel9">성배 9</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 9.jpg" alt="컵 9 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>이상 실현, 감각적 즐거움, 만족, 소원 성취</p>
+
+                        <h6>정방향</h6>
+                        <p>풍요, 행복감, 유리한 상황, 성공 획득, 만족스러운 사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>물질적 손실, 실수, 내적 불만족, 절제 부족, 시작은 좋으나 끝이 좋지 않음, 사랑의 위기</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>성배 8의 남자의 힘든 탐색이 마침내 결실을 맺어, 그는 이제 원하는 삶을 찾았습니다. 그의 뒤에는 9개의 성배가 정렬되어 있고, 남자는 건강하고 풍요로우며 기분이 좋고 만족스럽습니다. 성배 9의 주요 의미는 '소원'의 성취입니다. 이는 특정 분야에 국한되지 않고 시각, 미각, 촉각 등 모든 종류의 즐거움과 만족을 포함합니다. 점을 볼 때 성배 9가 정위로 나오면, 당사자에게 자신의 꿈을 찾고 열심히 추구하라고 상기시켜줍니다. 그렇게 하면 반드시 소원을 이루고 원하는 모든 물질적 또는 정신적인 것을 얻을 수 있을 것입니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 10 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 10.jpg" class="card-img-top" alt="컵 10" data-bs-toggle="modal" data-bs-target="#modalCups10">
+                <div class="card-body">
+                    <h5 class="card-title">성배 10</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 10 -->
+        <div class="modal fade" id="modalCups10" tabindex="-1" aria-labelledby="modalCupsLabel10" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabel10">성배 10</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 10.jpg" alt="컵 10 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>기쁨, 가족, 평화, 행복, 가족 구성원</p>
+
+                        <h6>정방향</h6>
+                        <p>내적 평화, 좋은 감정 상태, 평온, 만족, 화해, 가정의 행복, 달콤한 사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>불안감, 우정 상실, 가정 폭력, 대립적 인간관계, 연인과의 관계 긴장</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>부부가 서로 껴안고 있고 아이들이 놀고 있으며, 배경에는 푸른 강과 집이 보입니다. 이는 조화롭고 행복하며 화목한 가족을 나타냅니다. 성배 2의 연인 커플이 폭풍우를 지나 마침내 무지개를 보고, 결합하여 따뜻한 가정을 이루고 자녀를 낳아 기릅니다. 하늘에 10개의 성배가 찬란한 무지개를 이루어, 삶에서 감정의 가치를 상징하며, 진심으로 대하고 진실되게 베풀어야 행복의 진정한 의미를 찾을 수 있다고 알려줍니다. 또한 성배 10은 '단순한 삶'의 비밀을 암시합니다. 성배 7의 성배가 욕망을 담는 그릇이었다면, 성배 10의 성배는 원래의 상태로 돌아가 허망함을 버리고 평범한 마음으로 살아야 진정한 행복을 찾을 수 있다고 알려줍니다. 사랑을 점칠 때 성배 10이 정위로 나오면 당사자와 연인이 곧 결혼할 수 있음을 나타낼 수 있고, 인간관계 문제를 점칠 때는 협력과 화해의 날이 곧 올 것임을 나타냅니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 시종 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 시종.jpg" class="card-img-top" alt="컵 시종" data-bs-toggle="modal" data-bs-target="#modalCupsPage">
+                <div class="card-body">
+                    <h5 class="card-title">성배의 시종</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 시종 -->
+        <div class="modal fade" id="modalCupsPage" tabindex="-1" aria-labelledby="modalCupsLabelPage" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabelPage">성배의 시종</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 시종.jpg" alt="컵 시종 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>감정, 친밀함, 직관, 사랑, 연약함, 첫사랑</p>
+
+                        <h6>정방향</h6>
+                        <p>어린아이 같음, 명상, 열심히 노력함, 따뜻함, 주변에 열정적인 사람이 있음, 민감함, 좋은 소식, 첫사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>손재주가 좋음, 겸손, 불쾌함, 총애를 받아 교만해짐, 통제를 벗어남, 사랑은 조심스럽게 다뤄야 함</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>그림 속의 소년은 하얗고 연약하며, 성장 중인 소년입니다. 그는 감성적이고 사랑이 많으며 첫사랑에 빠져있습니다. 지나치게 민감해서 쉽게 상처를 받습니다. 그는 매우 어린아이 같아서 자신의 감정을 잘 숨기지 못합니다. 다른 사람의 칭찬을 받으면 세상에서 가장 행복한 사람이 된 것 같이 느끼지만, 누군가의 무심한 농담이 그를 건드리면 그는 곰곰이 생각하고 심지어 자신이 넓은 바다에 떠 있는 무력한 외로운 배라고 느낄 정도로 슬퍼합니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 기사 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 기사.jpg" class="card-img-top" alt="컵 기사" data-bs-toggle="modal" data-bs-target="#modalCupsKnight">
+                <div class="card-body">
+                    <h5 class="card-title">성배의 기사</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 기사 -->
+        <div class="modal fade" id="modalCupsKnight" tabindex="-1" aria-labelledby="modalCupsLabelKnight" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabelKnight">성배의 기사</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 기사.jpg" alt="컵 기사 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>로맨틱, 우아함, 꾸밈, 상상, 반성, 내면, 민감함</p>
+
+                        <h6>정방향</h6>
+                        <p>로맨틱함, 새로운 기회, 삶의 변화, 꾸밈, 유혹, 감정적임, 열렬한 사랑 또는 사랑이 가져오는 기쁨</p>
+
+                        <h6>역방향</h6>
+                        <p>평온 속의 위기, 사기, 방탕함, 부적절한 행동, 사랑 때문에 아픔, 삼각관계에 빠지기 쉬움</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>성배 기사는 '사랑의 사람'입니다. 78장의 타로 카드 중에서 성배 기사가 사랑을 대변하기에 가장 적합합니다. 기사가 사랑에 빠질 때, 그보다 더 열정적이고 로맨틱한 사람은 없으며, 사랑을 추구할 때 그보다 더 다양한 방법을 쓰는 사람도 없습니다. 그는 그의 사랑과 분리될 수 없습니다. 하지만 우리는 성배 기사를 단순히 '바람둥이'로 이해해서는 안 됩니다. 실제로 성배 기사의 사랑은 순수하며, 그는 가정에도 매우 충실합니다. 사랑과 관련 없는 문제를 점칠 때, 성배 기사의 정위는 종종 직관과 창의성을 나타냅니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 퀸 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 퀸.jpg" class="card-img-top" alt="컵 퀸" data-bs-toggle="modal" data-bs-target="#modalCupsQueen">
+                <div class="card-body">
+                    <h5 class="card-title">성배의 여왕</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 퀸 -->
+        <div class="modal fade" id="modalCupsQueen" tabindex="-1" aria-labelledby="modalCupsLabelQueen" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabelQueen">성배의 여왕</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 퀸.jpg" alt="컵 퀸 카드">
+                        <div class="card-description">
+                        <h6>키워드</h6>
+                        <p>사랑이 넘치는, 선한, 직관적인, 부드러운, 경청하는</p>
+
+                        <h6>정방향</h6>
+                        <p>풍부한 감정, 감성적, 자비로움, 성공이 임박함, 선함, 공정함, 진행 중인 사랑</p>
+
+                        <h6>역방향</h6>
+                        <p>의심이 많음, 좋은 친구, 나쁜 성격으로 인한 어려움, 품행 불량, 질투하는 연인</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>성배의 여왕은 매우 감성적인 여성입니다. 달의 변화, 자연의 생멸, 꽃의 개화와 낙화, 연인의 목소리와 웃음 모두가 그녀의 민감한 마음을 울립니다. '사랑 없는 여자의 삶은 이미 끝난 것이나 다름없다'라는 말은 성배의 여왕에게 가장 적합합니다. 사랑은 성배의 여왕 삶의 양식이며, 그녀에게 감정의 필요성은 세상의 모든 보석보다 더 큽니다. 여왕은 또한 아름답고, 선하며, 공정하고 매력적인 성숙한 여성으로, 이상적인 어머니이자 언니입니다. 그녀의 품위는 젊은이들을 매료시키며, '누나-동생 연애'가 쉽게 일어날 수 있습니다. 사랑과 관련 없는 문제에 대해 예측할 때 성배의 여왕 카드가 나오면, 당사자가 직관을 따라 문제를 처리하고, 선의와 관용으로 갈등을 해소해야 함을 암시합니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 킹 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/컵 킹.jpg" class="card-img-top" alt="컵 킹" data-bs-toggle="modal" data-bs-target="#modalCupsKing">
+                <div class="card-body">
+                    <h5 class="card-title">성배의 왕</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 킹 -->
+        <div class="modal fade" id="modalCupsKing" tabindex="-1" aria-labelledby="modalCupsLabelKing" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCupsLabelKing">성배의 왕</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/컵 킹.jpg" alt="컵 킹 카드">
+                        <div class="card-description">
+
+                        <h6>키워드</h6>
+                        <p>현명함, 인도주의적, 평온함, 용서, 노련함, 자애로움</p>
+
+                        <h6>정방향</h6>
+                        <p>좋은 아버지, 박식함, 존경받음, 전문가, 성취, 창의성, 이상적인 연인</p>
+
+                        <h6>역방향</h6>
+                        <p>겉과 속이 다름, 혐오감을 줌, 도덕성 부족, 명예와 이익 추구, 손실, 외도나 삼각관계 가능성</p>
+
+                        <h6>카드의 의미</h6>
+                        <p>성배의 왕은 전형적인 자애로운 아버지입니다. '왕'으로서 그의 왕국은 그의 가정, 연인, 그리고 식탁입니다. 그는 온화하고 자비롭지만, 자신의 세계의 주인으로서 수완도 부족하지 않으며, 명석하고 이성적이며 장기적인 안목을 가지고 있습니다. 감정을 다루는 데 있어서, 그는 책임감 있는 남성이며, 그의 부드러움은 그의 여인에게 봄바람과 같은 상쾌함과 달콤한 술과 같은 감미로움을 줍니다.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4>소드 슈트</h4>
+        <!-- 카드 1 에이스 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 1 에이스.jpg" class="card-img-top" alt="검의 에이스" data-bs-toggle="modal" data-bs-target="#modalSwordsAce">
+                <div class="card-body">
+                    <h5 class="card-title">검의 에이스</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 1 에이스 -->
+        <div class="modal fade" id="modalSwordsAce" tabindex="-1" aria-labelledby="modalSwordsLabelAce" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabelAce">검의 에이스</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 1 에이스.jpg" alt="검의 에이스 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>지성, 정의, 인내, 진실, 사상, 이성, 유일무이함</p>
+
+                            <h6>정방향</h6>
+                            <p>진취적, 강력한 새로운 시작, 어려움 직면, 책임 수용, 위기를 기회로, 연인 정복</p>
+
+                            <h6>역방향</h6>
+                            <p>파괴, 강적, 곤란, 분쟁, 장애물 가득, 무모함으로 인한 재난, 다투는 연인</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>검이 칼집에서 빠져나와 차가운 기운이 감돕니다. 미래가 어떻게 될지는 오직 검 자체만이 알고 있습니다. 산맥이 연이어 있고 하늘은 구름 한 점 없이 맑습니다. 구름 속에서 뻗어 나온 한 쌍의 큰 손이 힘차게 검을 쥐고 있으며, 검은 왕관과 월계관을 강력하게 관통하고 있습니다. 검의 이러한 권위에 도전하는 기세는 사람들을 놀라게 합니다. 예측 시 검의 에이스가 정위로 나타나면, 단지 일이나 행동이 시작되었음을 나타내며, 당사자가 자신감과 용기로 가득 차 있음을 보여줍니다. 좋고 나쁨을 구분하지 않으며, 그것이 사랑을 가져올지 미움을 낳을지, 성공의 시작인지 실패의 근원인지는 예측할 수 없습니다. 어떻게 길함을 취하고 흉함을 피해 이상적인 목표에 도달할 것인가는 검을 든 사람이 잘 판단하고 신중히 행동해야 합니다. 또한, 검이 바람의 원소와 관련되어 있기 때문에, 검의 에이스는 지성, 정의, 지식 등과 관련된 의미도 가지고 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 2 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 2.jpg" class="card-img-top" alt="검의 2" data-bs-toggle="modal" data-bs-target="#modalSwords2">
+                <div class="card-body">
+                    <h5 class="card-title">검의 2</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 2 -->
+        <div class="modal fade" id="modalSwords2" tabindex="-1" aria-labelledby="modalSwordsLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel2">검의 2</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 2.jpg" alt="검의 2 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>억압, 교착 상태, 회피, 집착, 내적 갈등</p>
+
+                            <h6>정방향</h6>
+                            <p>전념, 일시적 평화, 의지 굳음, 현실 도피, 난처한 상황, 큰 갈등, 폐쇄적인 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>교착 상태 타파, 긴장 해소, 이중 인격, 이기적 행동, 겉과 속이 다른 연인</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>연한 회색 긴 옷을 입은 여인이 눈을 흰 천으로 가린 채 돌 의자에 앉아 있습니다. 양손에 검을 교차해 들고 방어적인 자세를 취하고 있습니다. 여인의 마음이 닫혀 있음을 알 수 있으며, 겉으로는 평온해 보이지만 실제로는 내면의 갈등이 심합니다. 여인의 눈을 가린 흰 천은 현실 도피를 상징하며, 뒤에 일렁이는 파도는 그녀의 내면의 실제 상태를 보여줍니다. 검의 2가 나타나면 당사자가 결정을 내려야 할 때 망설이거나 결정을 거부하고 있음을 의미합니다. 검의 2는 동시에 당사자에게 도피하지 말고 진실을 직시하라고 경고합니다. 사실 상황은 생각만큼 나쁘지 않으며, 끈질기게 따라다니는 문제를 과감히 처리해야만 편안히 앞으로 나아갈 수 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 3 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 3.jpg" class="card-img-top" alt="검의 3" data-bs-toggle="modal" data-bs-target="#modalSwords3">
+                <div class="card-body">
+                    <h5 class="card-title">검의 3</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 3 -->
+        <div class="modal fade" id="modalSwords3" tabindex="-1" aria-labelledby="modalSwordsLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel3">검의 3</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 3.jpg" alt="검의 3 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>슬픔, 배신, 외로움, 슬픈 기억</p>
+
+                            <h6>정방향</h6>
+                            <p>슬픔, 다툼, 상심, 관심 상실, 대립, 이별, 별거, 눈물, 슬픈 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>자폐, 큰 손실, 불안감, 혼란, 미련, 사랑과 미움이 교차하는 연인</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>검의 3은 '슬픔'으로 유명한 카드입니다. 하늘은 어둡고, 강한 바람이 불며, 비가 세차게 내리고, 세 개의 검이 하나의 심장을 관통하는 모습은 매우 잔인해 보입니다. 이 이미지는 상심의 모습을 생생하게 보여줍니다. 검의 3이 나타나면 대개 당사자가 감정적으로 심각한 자극을 받았음을 상징합니다. 삼각관계일 수도 있고, 연인에게 버림받았을 수도 있으며, 험담에 상처받았거나 친구에게 배신당했을 수도 있습니다. 하지만 우리는 이 카드를 다른 각도에서 바라볼 필요가 있습니다. 성장 과정에서 누구나 이런저런 상처를 받게 되지만, 올바르게 대처한다면, 상처를 경험으로 삼고 평상심으로 대응한다면, 넘지 못할 산도, 넘지 못할 벽도 없습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 4 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 4.jpg" class="card-img-top" alt="검의 4" data-bs-toggle="modal" data-bs-target="#modalSwords4">
+                <div class="card-body">
+                    <h5 class="card-title">검의 4</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 4 -->
+        <div class="modal fade" id="modalSwords4" tabindex="-1" aria-labelledby="modalSwordsLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel4">검의 4</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 4.jpg" alt="검의 4 카드">
+                        <div class="card-description">
+                            <h6>정방향</h6>
+                            <p>때를 기다림, 후퇴를 통한 전진, 일시적 양보, 휴식, 혼란, 겉으로는 차갑지만 속으로는 열정적인 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>큰 손실, 예측 불가, 패배, 일시적 휴식, 불만족, 동정심을 자아내는 연인</p>
+
+                            <h6>키워드</h6>
+                            <p>휴식, 준비, 명상, 마음의 근심 내려놓기</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>젊은 검객이 매트 위에 누워 쉬고 있습니다. 표정은 매우 평온하며, 잠들었는지 깨어있는지 모호합니다. 그의 머리 위에는 세 개의 검이 걸려 있고, 검객은 여전히 갑옷을 입고 있습니다. 침대에는 한 자루의 검이 놓여 있어, 그가 매우 경계하고 있음을 나타냅니다. 조금이라도 움직임이 있으면 즉시 일어나 검을 들고 싸울 준비가 되어 있음을 암시합니다. 검의 4가 나타나면 일반적으로 당사자가 일시적인 휴식 상태에 있거나 약간 소극적인 경향이 있음을 암시합니다. 하지만 이는 일시적인 상황이며, 당사자는 재기의 기회를 찾는 것을 한 순간도 포기하지 않았습니다. 다음 중요한 행동을 예측할 때, 이 카드는 종종 때를 기다리는 의미를 가집니다. 또한 이 카드는 당사자에게 교훈을 정리하고 경험을 얻을 것을 상기시킵니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 5 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 5.jpg" class="card-img-top" alt="검의 5" data-bs-toggle="modal" data-bs-target="#modalSwords5">
+                <div class="card-body">
+                    <h5 class="card-title">검의 5</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 5 -->
+        <div class="modal fade" id="modalSwords5" tabindex="-1" aria-labelledby="modalSwordsLabel5" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel5">검의 5</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 5.jpg" alt="검의 5 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>이기심, 불화, 분쟁, 일시적 승리, 악화</p>
+
+                            <h6>정방향</h6>
+                            <p>일시적 승리, 파괴, 사직 또는 해고, 추락, 남을 해치고 자신의 이익을 취함, 욕설, 근시안적인 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>무의미한 다툼 중단, 예측 불가, 패배, 불만족, 정신이 혼미한 연인</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>승자가 전리품을 얻고, 패자들이 떠나는 모습을 보며 냉소를 짓습니다. 이는 다툼, 분쟁 또는 전쟁의 실제적인 모습입니다. 승자는 자만에 빠져 있고, 패자는 의기소침해 있습니다. '군자는 당당하고, 소인은 항상 불안하다'는 말처럼, 검의 5에서의 승리는 소인배가 득세한 의미가 더 강합니다. 그의 승리는 일시적일 뿐이며, 도의적으로는 완전한 패배자입니다. 따라서 이 승리는 무의미하며, 그의 허영심을 만족시킬 수는 있지만, 야심과 이기심을 키우는 것 외에는 거의 얻는 것이 없습니다. 검의 5는 당사자에게 공정한 경쟁을 해야 함을 상기시킵니다. 부당한 수단으로 얻은 승리는 자신의 명성만 실추시킬 뿐입니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 6 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 6.jpg" class="card-img-top" alt="검의 6" data-bs-toggle="modal" data-bs-target="#modalSwords6">
+                <div class="card-body">
+                    <h5 class="card-title">검의 6</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 6 -->
+        <div class="modal fade" id="modalSwords6" tabindex="-1" aria-labelledby="modalSwordsLabel6" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel6">검의 6</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 6.jpg" alt="검의 6 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>우울, 회복, 평온, 문제를 안고 전진</p>
+
+                            <h6>정방향</h6>
+                            <p>앞길이 험난함, 문제가 많음, 외부 도움이 적음, 어려움 끝에 희망이 보임, 고난을 겪는 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>어려움 끝에 희망이 보임, 세상과 단절되거나 도움을 받음, 난관을 극복함, 사랑의 고백</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>뱃사공과 그의 아내와 딸이 장애물이 많은 상황에서도 열심히 전진하고 있습니다. 검의 6은 힘든 삶 속에서의 고난, 굴하지 않는 투쟁, 굴욕을 참고 위험을 안고 전진하는 모습입니다. 배의 한쪽은 파도가 거세지만, 배의 앞쪽은 바다가 잔잔하고, 육지가 그들과 멀지 않습니다. 뱃사공은 검은 긴 장대를 들고 있는데, 이는 잠재력을 상징합니다. 검의 6이 나타나면, 당사자의 현재 상황이나 겪고 있는 일이 그리 나쁘지는 않지만 그렇다고 아주 좋지도 않음을 암시합니다. 물러서는 것은 바람직하지 않으며, 노력만 한다면 희망이 보일 것입니다. 검의 6의 또 다른 의미는 여행입니다. 특히 물과 관련된 여행을 나타냅니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 7 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 7.jpg" class="card-img-top" alt="검의 7" data-bs-toggle="modal" data-bs-target="#modalSwords7">
+                <div class="card-body">
+                    <h5 class="card-title">검의 7</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 7 -->
+        <div class="modal fade" id="modalSwords7" tabindex="-1" aria-labelledby="modalSwordsLabel7" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel7">검의 7</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 7.jpg" alt="검의 7 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>도피, 불명예, 홀로 행동, 갑작스러운 아이디어, 남다름</p>
+
+                            <h6>정방향</h6>
+                            <p>계획 실패, 불명예, 부주의, 비밀 누설, 기만, 도난, 불명예스러운 연애</p>
+
+                            <h6>역방향</h6>
+                            <p>예상치 못한 행운, 조언 참고, 좋은 충고, 유리한 상황</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>한 남자가 군영에 몰래 들어가 검을 훔치고 성공에 기뻐합니다. 하지만 우리는 남자가 다섯 개의 검만 훔치고 두 개의 검은 그대로 두었음을 볼 수 있습니다. 이는 그가 상대방의 힘을 약화시켰지만, 상대방에게 반격할 기회를 남겼다는 것을 의미합니다. 적의 보복을 두려워하며, 남자는 앞으로 항상 불안한 삶을 살게 될 것입니다. 검의 7은 일반적으로 기만, 교활함, 배신, 불명예스러운 행동을 상징합니다. 검의 7의 출현은 당사자가 정직하고 올바르게 행동해야 함을 암시합니다. 절대로 비열한 행동을 해서는 안 됩니다. 부도덕한 행위는 일시적으로 성공할 수 있지만, 결국 다른 사람들에게 들통날 것입니다. 검의 7은 또한 거짓말, 소문, 뒤에서의 작은 행동들, 그리고 중상모략을 나타냅니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 카드 8 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 8.jpg" class="card-img-top" alt="검의 8" data-bs-toggle="modal" data-bs-target="#modalSwords8">
+                <div class="card-body">
+                    <h5 class="card-title">검의 8</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 8 -->
+        <div class="modal fade" id="modalSwords8" tabindex="-1" aria-labelledby="modalSwordsLabel8" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel8">검의 8</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 8.jpg" alt="검의 8 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>제약, 무능, 혼란, 제한, 중단</p>
+
+                            <h6>정방향</h6>
+                            <p>고립, 위기, 침체, 나쁜 소식, 중상모략, 구속, 다툼</p>
+
+                            <h6>역방향</h6>
+                            <p>구속에서 벗어남, 자유 획득, 위기 해결, 새로운 삶의 시작, 재시작, 떠남</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>검의 8에서 여성은 양손이 단단히 묶이고 눈이 가려진 채 검의 진에 갇혀 있으며, 발 아래의 진흙은 그녀가 모욕을 당하고 있음을 상징합니다. 이 무력한 여성을 도와줄 사람이 없습니다. 검의 8은 진퇴양난 또는 고립무원의 상징이며, 삶의 상태나 정신 상태를 표현합니다. 하지만 여성이 처한 상황은 곤경일 뿐 절망적인 상황은 아니라는 것을 이해해야 합니다. 따라서 이 카드는 악의가 없으며 저주도 아닙니다. 주목해야 할 점은 검의 8의 여성이 이런 상황에 처한 것이 단순히 외부 환경 때문만이 아니라, 더 많은 부분이 그녀 스스로 정신적 오류에서 벗어나지 못하고 스스로를 가두고 있기 때문입니다. 대 아르카나의 악마 카드에 있는 한 쌍의 남녀와 비슷한데, 그들은 스스로 사슬을 풀 수 있지만 여전히 깨닫지 못하고 있습니다. 여성의 뒤에는 성이 있습니다. 성은 희망의 부름이며, 위험을 뚫고 나간 후의 자유로운 보금자리입니다. 당사자가 검의 8을 만났을 때, 그 부정적인 의미에만 집중해서는 안 되며, 오히려 당사자에게 곤경을 극복하고 용감하고 적극적으로 삶에 맞서야 한다는 것을 상기시키는 것일 수 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 9 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 9.jpg" class="card-img-top" alt="검의 9" data-bs-toggle="modal" data-bs-target="#modalSwords9">
+                <div class="card-body">
+                    <h5 class="card-title">검의 9</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 9 -->
+        <div class="modal fade" id="modalSwords9" tabindex="-1" aria-labelledby="modalSwordsLabel9" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel9">검의 9</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 9.jpg" alt="검의 9 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>불안, 고뇌, 죄책감, 걱정, 악몽</p>
+
+                            <h6>정방향</h6>
+                            <p>절망, 악몽, 고난, 죄책감, 유산, 절교, 병, 연인으로 인한 불행</p>
+
+                            <h6>역방향</h6>
+                            <p>의심, 수치심, 많은 비밀을 가진 사람, 우유부단, 공포, 소문, 중상모략</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>침대에 앉아 있는 남자가 얼굴을 가리고 있고, 이불은 바닥에 끌려 있어 고통스러워 보입니다. 검의 9의 커튼 같은 검은 배경은 사람들에게 압박감을 줍니다. 밤이 깊어, 그림 속의 남자는 악몽에 놀라 깨어난 것 같습니다. 이때 그는 갑자기 꿈과 현실이 사실 차이가 없다는 것을 깨닫고, 내면의 공포에서 벗어날 수 없습니다. 검의 9는 인간의 가장 깊은 공포, 가장 동정심을 불러일으키는 후회, 그리고 가장 벗어나기 어려운 고통을 생생하게 표현합니다. 검의 9와 검의 3은 정신적 고통을 표현하는 면에서 비슷하지만, 비교해보면 검의 9는 당사자의 내면의 고뇌를 더 많이 가리키는 반면, 검의 3은 대인 관계로 인한 고민과 고통을 더 많이 가리킵니다. 예언에서 검의 9가 나타나면, 당사자가 곤경에 처하거나 정신적, 육체적 고통을 겪고 있을 수 있음을 예고합니다. 이를 극복할 수 있을지는 당사자가 현실을 직시할 용기가 있는지에 달려 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 10 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 10.jpg" class="card-img-top" alt="검의 10" data-bs-toggle="modal" data-bs-target="#modalSwords10">
+                <div class="card-body">
+                    <h5 class="card-title">검의 10</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 10 -->
+        <div class="modal fade" id="modalSwords10" tabindex="-1" aria-labelledby="modalSwordsLabel10" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabel10">검의 10</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 10.jpg" alt="검의 10 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>최저점, 순교, 희생 정신, 종말, 극단, 위험</p>
+
+                            <h6>정방향</h6>
+                            <p>희생 정신, 붕괴, 희망 전무, 위험, 악운, 소극적, 감정의 출구를 찾지 못함</p>
+
+                            <h6>역방향</h6>
+                            <p>갑작스러운 운명의 변화, 전환점, 곤경 상황의 개선, 연애의 전환점</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>한 남자가 땅에 엎드려 있고, 등에 10개의 검이 꽂혀 있으며, 그 중 한 개의 검은 귀를 통해 꽂혀 있어 그 모습이 참혹합니다. 한 눈에 보아도 검의 10은 '나쁜 카드'입니다. 검의 9가 내면의 고통이 가장 강렬한 정도를 나타낸다면, 검의 10의 피해는 대부분 외부에서 오며, 모든 과도한 행동이 초래한 매우 심각한 악결과를 광범위하게 가리킵니다. 이 카드의 그림이 설명하듯이, 한 검으로도 충분히 치명적인데 왜 10개의 검이 필요할까요? 검의 10이 나타나면 당사자가 생활 속에서 심한 상처를 받거나, 갑작스러운 타격을 입거나, 꿈이 완전히 무너지는 등의 좋지 않은 소식을 암시할 수 있습니다. 많은 타로 마스터들이 종종 검의 10을 죽음, 흉보 등과 연관 짓지만, 사실 검의 10은 대 아르카나의 죽음 카드와 마찬가지로 육체적 죽음을 상징하는 경우는 거의 없습니다. 간과할 수 없는 것은, 이 카드에도 긍정적인 면이 있다는 것입니다. 그림 상단의 검은 하늘에 보이는 밝은 빛과 노란 광채는 새벽이 곧 올 것임을 암시하며, 당사자에게 실패에서 교훈을 얻고, 고통 속에서 인내하며, 실패 속에서 성장하는 법을 배워야 한다고 말해줍니다. 큰 좌절을 겪어야만 큰 성취를 이룰 수 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 시종 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 시종.jpg" class="card-img-top" alt="검의 시종" data-bs-toggle="modal" data-bs-target="#modalSwordsPage">
+                <div class="card-body">
+                    <h5 class="card-title">검의 시종</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 시종 -->
+        <div class="modal fade" id="modalSwordsPage" tabindex="-1" aria-labelledby="modalSwordsLabelPage" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabelPage">검의 시종</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 시종.jpg" alt="검의 시종 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>사고, 공정, 정직, 인내</p>
+
+                            <h6>정방향</h6>
+                            <p>논리적, 기민함, 조심성, 학습, 분석, 관찰, 침착, 이성적 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>예견력 부족, 준비 부족, 허점, 강력한 상대, 질병, 감정 진전 통제 불가</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>바람을 쫓는 소년이 양손에 검을 들고 단호한 표정을 짓고 있습니다. 그의 뒤로는 맑은 하늘과 상서로운 구름이 펼쳐져 있어 전체적으로 상승하는 분위기를 자아냅니다. 검의 시종은 '문제아'입니다. 하지만 이는 단지 그의 호기심을 가리키는 것일 뿐, 품성 면에서 이 소년은 신뢰할 만합니다. 그는 모든 일에 대해 '왜?'라고 묻기를 좋아하며, 근본을 파고드는 유형입니다. 그는 똑똑하고 이해력이 뛰어나며, 다른 세 종류의 시종 카드와 비교했을 때 검의 시종은 생각이 많은 소년입니다. 그는 일을 할 때 더 신중하고, 이성적이며, 문제를 분석하고 사고하는 데 능숙합니다. 검의 시종이 나타나면 당사자가 문제 해결 방법을 찾을 수 있음을 암시하거나, 당사자가 일을 처리할 때 신중해야 하고 소문을 퍼뜨리지 말아야 함을 암시할 수 있습니다. 또한 당사자가 다른 사람의 비방을 받을 수 있음을 나타낼 수도 있습니다. 구체적인 상황은 특정 질문과 해당 카드가 스프레드에서 차지하는 위치에 따라 결정됩니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 기사 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 기사.jpg" class="card-img-top" alt="검의 기사" data-bs-toggle="modal" data-bs-target="#modalSwordsKnight">
+                <div class="card-body">
+                    <h5 class="card-title">검의 기사</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 기사 -->
+        <div class="modal fade" id="modalSwordsKnight" tabindex="-1" aria-labelledby="modalSwordsLabelKnight" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabelKnight">검의 기사</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 기사.jpg" alt="검의 기사 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>직접적, 박학다식, 권위, 오만</p>
+
+                            <h6>정방향</h6>
+                            <p>솔직함, 도전, 용기, 전진, 강력한 반발, 무정한 감동</p>
+
+                            <h6>역방향</h6>
+                            <p>경솔함, 자만, 경망, 감정에 지배됨, 관계 불화, 모순된 연인</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>기사가 검을 휘두르며 용감하게 전진합니다. 강풍도 그의 속도를 따라잡지 못하고, 맹렬한 불꽃도 그의 열정을 부러워합니다. 기사는 절대적으로 무모한 청년입니다. 그는 자유를 추구하고 용기가 가상하지만, 종종 좋은 의도로 나쁜 결과를 초래하기도 하며, 때로는 말을 함부로 하기도 합니다. 그는 이성이 부족하지만 능력이 있고 특히 말솜씨가 뛰어납니다. 연애 운세를 볼 때 검의 기사가 나타나면, 당사자가 연애할 때 약간 마음이 다른 곳에 있을 수 있지만, 여전히 상대방에게 강한 매력을 느낄 수 있음을 암시할 수 있습니다. 하지만 서로 그다지 어울리지 않을 수 있으며, 장기적인 관계를 만드는 것은 현실적이지 않을 수 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 여 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 퀸.jpg" class="card-img-top" alt="검의 여" data-bs-toggle="modal" data-bs-target="#modalSwordsQueen">
+                <div class="card-body">
+                    <h5 class="card-title">검의 여왕</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 여 -->
+        <div class="modal fade" id="modalSwordsQueen" tabindex="-1" aria-labelledby="modalSwordsLabelQueen" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabelQueen">검의 여왕</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 퀸.jpg" alt="검의 여 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>정직, 지혜, 민첩, 경험 풍부, 솔직</p>
+
+                            <h6>정방향</h6>
+                            <p>뜻대로 될 때 고독, 실의에 빠졌을 때 보상, 결벽증, 과도함, 상실감, 이별, 헤어짐</p>
+
+                            <h6>역방향</h6>
+                            <p>고집, 오만, 완고한 상대, 불공정, 지나치게 강한 기세, 악의가 있음, 독신</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>검의 여왕이 왕좌에 앉아 침착하고 여유로운 모습으로 모든 것을 꿰뚫어 보는 듯한 표정을 짓고 있습니다. 검의 여왕은 지성과 관용의 상징입니다. 그녀는 박학다식하며 전형적인 직장 여성입니다. 그녀는 거의 모든 것을 알고 있으며, 특히 사람들과 소통하는 데 능숙합니다. 그녀는 만능이고 일 처리가 영리하며 개성이 뚜렷하고, 경제적으로나 생활 방식에서 매우 독립적이기 때문에 많은 남성들을 매료시킬 수 있습니다. 하지만 그녀는 종종 일상생활의 사소한 감정에 얽매인 '소인배' 남성들을 경멸하며, 그뿐만 아니라 모든 남성에 대해 강한 통제욕을 가지고 있습니다. 게다가 감정에 특별히 신경 쓰지 않기 때문에, 결국 연애의 결말은 항상 그녀가 원하는 결과와 거리가 멀어지고, 심지어 독신이 되거나 고독한 상황에 빠질 수 있습니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 왕 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/소드 킹.jpg" class="card-img-top" alt="검의 왕" data-bs-toggle="modal" data-bs-target="#modalSwordsKing">
+                <div class="card-body">
+                    <h5 class="card-title">검의 왕</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 왕 -->
+        <div class="modal fade" id="modalSwordsKing" tabindex="-1" aria-labelledby="modalSwordsLabelKing" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSwordsLabelKing">검의 왕</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/소드 킹.jpg" alt="검의 왕 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>엄숙, 총명, 공정, 분석, 윤리, 명확</p>
+
+                            <h6>정방향</h6>
+                            <p>권위, 윤리, 특정 분야의 리더, 침착, 상상력, 사랑의 달인</p>
+
+                            <h6>역방향</h6>
+                            <p>잔인한 이기심, 갈등, 악의적인 공격, 초조, 변덕스러움</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>검의 왕이 바른 자세로 앉아 검을 들고 있습니다. 검날은 하늘을 향해 비스듬히 가리키고 있으며, 풍운이 변화해도 전혀 두려워하지 않습니다. 검의 왕은 타고난 리더십을 가지고 있으며, 그가 종사하는 분야의 전문가입니다. 그는 공정하게 일을 처리하고 분쟁을 조정하는 데 능숙하며 신뢰할 만합니다. 대아르카나의 정의 카드와 비교하면, 검의 왕은 사실 세속적인 삶에서 영리한 역할을 합니다. 그는 말을 능숙하게 구사하며, 정의로운 외모 아래 원만한 수완과 상황을 통제하는 강한 능력을 가지고 있습니다. 연애 운세를 볼 때, 이 카드는 당사자가 상대방과 거리가 있지만 깊은 애정과 관심이 있음을 상징하기도 합니다. 또한, 검의 왕은 가정에 대해 책임감 있는 좋은 남자이기도 합니다.</p>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4>펜타클 슈트</h4>
+        <!-- 카드 1 에이스 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 1 에이스.jpg" class="card-img-top" alt="펜타클 1 에이스" data-bs-toggle="modal" data-bs-target="#modalPentaclesAce">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 에이스</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 1 에이스 -->
+        <div class="modal fade" id="modalPentaclesAce" tabindex="-1" aria-labelledby="modalPentaclesLabelAce" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabelAce">펜타클  에이스</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 1 에이스.jpg" alt="펜타클 1 에이스 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>물질, 지위, 재산, 번영, 신뢰</p>
+
+                            <h6>정방향</h6>
+                            <p>물질적 풍요, 실용성, 번영, 행운, 안정된 생활, 안정적이고 실질적인 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>강한 욕망, 탐욕, 비합리성, 사치, 악명, 극도의 공허함, 속물적인 연애</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>구름 속에서 금화를 들고 있는 손이 나타나고, 아래에는 꽃과 풀이 무성하며, 멀리 흰 산맥이 보입니다. 펜타클은 실제적인 소유를 나타내며, 세속적인 삶에서 사람들이 간절히 원하는 돈과 건강 같은 것들을 상징합니다. 하지만 펜타클은 물질적 재산을 가리키는 동시에 정신 세계와도 밀접한 관련이 있습니다. 펜타클 에이스 카드에서 볼 수 있듯이, 상록덩굴로 만들어진 아치를 통과하는 하얀 작은 길은 순수한 정신 세계를 상징하는 흰 산맥으로 이어집니다. 점술에서 펜타클 에이스가 정방향으로 나타나면, 대개 당사자에게 돈을 벌 수 있는 새로운 계획이나 기회가 있고 전망이 밝다는 것을 의미합니다. 하지만 노력해야만 수확을 얻을 수 있으며, 그렇지 않으면 단순한 공상에 그칠 뿐입니다. 펜타클 에이스는 또한 당사자에게 급여 인상, 승진, 수입 증가 등의 좋은 소식이 있을 수 있음을 나타내기도 합니다. 때로는 연인에게 선물을 주거나 감각적인 즐거움을 중요시하는 의미도 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 2 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 2.jpg" class="card-img-top" alt="펜타클 2" data-bs-toggle="modal" data-bs-target="#modalPentacles2">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 2</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 2 -->
+        <div class="modal fade" id="modalPentacles2" tabindex="-1" aria-labelledby="modalPentaclesLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel2">펜타클 2</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 2.jpg" alt="펜타클 2 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>조화, 오락, 기동성, 순환, 투자, 교통</p>
+
+                            <h6>정방향</h6>
+                            <p>운이 나쁨, 물질적 고민, 투자, 순환, 조절 능력 학습, 혼란, 얽힌 연애</p>
+
+                            <h6>역방향</h6>
+                            <p>과도한 지출, 계획 초과, 겉으로는 행복하지만 내면은 고통스러움, 오락에 빠짐, 억지로 유지하는 연애</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>빨간 모자를 쓴 남자가 두 개의 금화를 즐겁게 다루고 있습니다. 금화 주위를 감싸고 있는 '8'자 모양의 띠는 무한을 상징하며, 그의 뒤로 몇 척의 배가 파도 위에서 흔들리고 있습니다. 이것이 바로 펜타클 2의 주요 의미로, 불안정한 생활 상태를 상징하며 대부분 재정적인 변동을 가리킵니다. '바람이 달걀 껍질을 불면 재산은 흩어지고 사람은 편안해진다'는 말처럼 외적인 것에 너무 집착하면 오히려 그것에 얽매이게 됩니다. 이 점에서 펜타클 2의 남자는 대 아르카나의 매달린 사람의 낮은 버전과 비슷합니다. 인생의 큰 풍파 앞에서 그는 그 이치를 깊이 이해하고 여유롭고 태연하게 대처합니다. 점술에서 펜타클 2가 나타나면 대개 당사자가 재정이나 감정 면에서 변동이나 고민이 있지만, 열린 마음을 가져야 하고 고집을 부리지 말아야 하며, 이성적이고 초연하게 대처해야 함을 암시합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 3 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 3.jpg" class="card-img-top" alt="펜타클 3" data-bs-toggle="modal" data-bs-target="#modalPentacles3">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 3</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 3 -->
+        <div class="modal fade" id="modalPentacles3" tabindex="-1" aria-labelledby="modalPentaclesLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel3">펜타클 3</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 3.jpg" alt="펜타클 3 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>협력, 능력, 계획, 토론, 한 걸음 한 걸음</p>
+
+                            <h6>정방향</h6>
+                            <p>사업 기회, 숙련도, 높은 수준, 재능, 완벽한 완성, 명예감, 감정 교류 부족</p>
+
+                            <h6>역방향</h6>
+                            <p>능력 부족, 평범한 사람, 물질적 손실, 미성숙한 생각, 충고를 듣지 않음, 열등감 있는 연애</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>교회에서 일하는 조각가의 열심히 한 작업이 수녀와 수사의 칭찬을 받았습니다. 그림에서 우리는 수녀가 설계도를 들고 수사와 함께 공사 진행 상황과 품질을 점검하는 모습을 볼 수 있습니다. 세 사람은 각자 맡은 일이 있고, 장식에 대해 토론하고 있으며, 서로 즐겁게 대화하고 있습니다. 두 사람은 조각가의 작업에 대해 칭찬을 하고, 조각가도 그들의 칭찬에 대해 언어적, 감정적으로 반응하고 있습니다. 펜타클 3은 일반적으로 팀 정신, 좋은 협력 관계, 소통과 조정을 상징합니다. 또한 자신의 기술이 다른 사람들로부터 인정받고 칭찬받으며, 이로 인한 정신적 기쁨을 나타냅니다. 연애 점술에서 펜타클 3은 당사자의 연인이 동료나 자주 협력하는 파트너 중에서 생길 수 있음을 암시할 수 있습니다. 또한 당사자와 연인 또는 애인 사이에 경제적으로 독립적이지만 서로 존경하면서도 정신적 교류가 부족할 수 있음을 암시합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 4 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 4.jpg" class="card-img-top" alt="펜타클 4" data-bs-toggle="modal" data-bs-target="#modalPentacles4">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 4</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 4 -->
+        <div class="modal fade" id="modalPentacles4" tabindex="-1" aria-labelledby="modalPentaclesLabel4" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel4">펜타클 4</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 4.jpg" alt="펜타클 4 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>소유, 폐쇄, 통제, 고수, 인색함, 고집</p>
+
+                            <h6>정방향</h6>
+                            <p>인색함, 소유욕, 폐쇄성, 우스운 절약, 꼼꼼한 계산, 재산에 대한 매우 강한 집착, 유산 문제</p>
+
+                            <h6>역방향</h6>
+                            <p>입에 풀칠하기 어려움, 재산 탕진, 계획 부재, 통제력 부족, 재운 나쁨, 강한 물질 욕망으로 인한 실패</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>펜타클 4의 남자는 전형적인 수전노처럼 보입니다. 그는 왕관을 쓰고 화려한 옷을 입고 있어 매우 부유해 보입니다. 그의 머리 위에 한 개의 금화가 있고, 발 아래에 두 개의 금화가 있으며, 그가 앉아 있는 상자 안에는 아마도 더 많은 금화가 있을 것입니다! 재산 앞에서 그는 놀란 토끼처럼 경계하는 표정을 짓고 있습니다. 마치 누군가가 이유 없이 그의 재산을 빼앗아갈까 봐 두려워하는 것 같습니다. 금화 하나를 잃어버리기만 해도 그는 매우 고통스러워할 것 같습니다. 자신의 재산을 손실로부터 보호하기 위해 그는 심지어 성을 떠나 사람들로부터 멀리 떨어져 혼자 살고 있습니다. 하지만 그의 세계가 이로 인해 안전할까요? 점술에서 펜타클 4가 정방향으로 나타나면, 당사자나 당사자에게 영향을 미치는 사람이 부유하지만 너무 꼼꼼하게 계산하고 인색하며, 다른 사람을 돕거나 자선 활동에 열중하지 않음을 암시합니다. 또한 부자들의 정신적으로 빈곤한 삶을 암시하기도 합니다. 연애 점술에서 펜타클 4는 당사자나 연애 상대방의 질투심이 너무 강함을 암시할 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 5 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 5.jpg" class="card-img-top" alt="펜타클 5" data-bs-toggle="modal" data-bs-target="#modalPentacles5">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 5</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 5 -->
+        <div class="modal fade" id="modalPentacles5" tabindex="-1" aria-labelledby="modalPentaclesLabel5" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel5">펜타클 5</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 5.jpg" alt="펜타클 5 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>어려운 시기, 거절, 건강 문제</p>
+
+                            <h6>정방향</h6>
+                            <p>금전적 고민, 물질적 빈곤, 연속된 실패, 어려운 시기, 실업, 변함없는 사랑, 고난을 함께 겪는 부부</p>
+
+                            <h6>역방향</h6>
+                            <p>정착하지 못함, 혼란과 무질서, 빈곤으로 인한 마음의 혼란, 터무니없는 생각, 정서적 지지 부족</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>누더기 옷을 입은 가난한 부부가 눈보라 치는 길을 걸어가고 있습니다. 펜타클 5의 그림은 잊을 수 없는 장면으로, 서양의 가난한 사람들이 크리스마스를 보내는 모습을 묘사하는 것 같습니다. 디킨스의 '올리버 트위스트'와 안데르센의 '성냥팔이 소녀'를 떠올리게 합니다. 펜타클 5는 '부족함과 어려움'으로 유명한 카드입니다. 주로 빈곤, 실업, 손실, 결핍, 건강 악화 등을 나타냅니다. 그림에서 부부가 정신적 안식처를 상징하는 교회를 지나갈 때, 교회에는 창문만 있고 문이 없어 '기도할 곳이 없다'고 할 수 있습니다. 그런 눈 내리는 날에 부부가 '하늘을 불러도 대답 없고, 땅을 불러도 응답 없는' 상황은 가슴 아픈 광경입니다. 하지만 펜타클 5가 모두 나쁜 소식만은 아닙니다. 이 부부가 눈보라와 가난 속에서도 서로를 아끼고 떠나지 않는 모습은 세상에 진정한 사랑이 있음을 보여주며, 진실한 사랑이 세상의 모든 것을 초월한다는 것을 말해주지 않나요?</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 6 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 6.jpg" class="card-img-top" alt="펜타클 6" data-bs-toggle="modal" data-bs-target="#modalPentacles6">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 6</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 6 -->
+        <div class="modal fade" id="modalPentacles6" tabindex="-1" aria-labelledby="modalPentaclesLabel6" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel6">펜타클 6</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 6.jpg" alt="펜타클 6 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>부유함, 기부, 참여, 만족</p>
+
+                            <h6>정방향</h6>
+                            <p>자선, 인기, 너그러운 마음, 상대방 통제, 정직함, 좋은 생활 상태</p>
+
+                            <h6>역방향</h6>
+                            <p>이기심, 강한 질투심, 나쁜 기분, 불순한 돈, 보답을 모름, 강한 욕심</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>펜타클 6에 나오는 남자는 분명 부자입니다. 그는 세련된 옷을 입고 상인처럼 보이며, 두 명의 거지가 그 앞에 무릎을 꿇고 불쌍하게 양손을 내밀어 구걸하고 있습니다. 펜타클 6은 강한 사회학적 의미를 지니고 있습니다. 사회의 부를 어떻게 분배해야 합리적일까요? 부자들은 사회에 대한 도덕적 책임이 있을까요? 흥미롭게도 자선을 베푸는 과정에서 남자의 왼손에는 정의를 상징하는 저울이 들려 있습니다. 이는 매우 의미심장한 세부 사항입니다. 자선에도 정도가 있어야 하며, 주는 양을 마음대로 정할 수 없다는 것을 보여줍니다. 이는 이성의 힘을 나타내는데, 자선은 단지 수단일 뿐이며, 사회의 게으른 사람들은 다른 사람의 자선을 받을 자격이 없기 때문입니다. 그림에는 세 명의 인물과 두 가지 입장이 있으므로, 펜타클 6이 나타날 때는 신중히 고려해야 합니다. 이는 당사자가 원하는 것을 얻게 될 수도 있고, 다른 사람을 위해 무언가를 해야 할 수도 있으며, 또는 좋은 재정 관리 능력을 가지고 있음을 나타낼 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 7 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 7.jpg" class="card-img-top" alt="펜타클 7" data-bs-toggle="modal" data-bs-target="#modalPentacles7">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 7</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 7 -->
+        <div class="modal fade" id="modalPentacles7" tabindex="-1" aria-labelledby="modalPentaclesLabel7" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel7">펜타클 7</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 7.jpg" alt="펜타클 7 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>평가, 변화, 보상, 때를 기다려야 함, 서두르지 말 것</p>
+
+                            <h6>정방향</h6>
+                            <p>열심히 일한 결과 얻음, 신중한 평가, 보상, 조심스러운 태도, 너무 서두르지 말 것, 일시적으로 실망스럽거나 만족스럽지 않은 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>과도한 노력, 무지, 경솔한 결정, 나쁜 투자, 순진한 사랑이 무정한 대우를 받음</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>펜타클 7의 인물은 젊은 농부의 모습입니다. 열심히 일한 끝에 그는 마침내 결실을 얻었고, 덩굴 잎에 7개의 펜타클이 걸려 있지만, 그의 표정에서 아쉬움이 보입니다. 점을 볼 때 펜타클 7이 나타나면, 당사자의 노력이 곧 또는 이미 어느 정도 보상을 받았지만, 이 보상이 당사자의 이상과는 거리가 있음을 나타냅니다. 이는 당사자가 현재 '행복의 갈림길'에 서 있음을 암시합니다. 얻는 것이 끝이 아니라 다음 여정의 시작이기 때문에, 당사자는 전략적 안목을 가지고 마음을 가라앉히고 잘 생각해 보며, 자신의 미래를 위해 더 장기적인 계획과 준비를 해야 합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 8 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 8.jpg" class="card-img-top" alt="펜타클 8" data-bs-toggle="modal" data-bs-target="#modalPentacles8">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 8</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 8 -->
+        <div class="modal fade" id="modalPentacles8" tabindex="-1" aria-labelledby="modalPentaclesLabel8" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel8">펜타클 8</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 8.jpg" alt="펜타클 8 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>근면, 세부사항, 지식, 전문성, 학습, 기술</p>
+
+                            <h6>정방향</h6>
+                            <p>강한 진취심, 세부사항, 뒤처지기 싫어함, 체계적, 완벽을 추구, 연구, 정성스럽게 가꾸는 연애</p>
+
+                            <h6>역방향</h6>
+                            <p>허명, 허영심, 실력 없음, 수단과 방법을 가리지 않음, 좋지 않은 연애 전망</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>그림 속의 젊은이는 부지런한 장인입니다. 그는 금화를 만드는 데 있어 매우 꼼꼼하고 열정적이며, 오랜 시간 동안 계속 작업하여 이미 7개를 성공적으로 만들었지만, 여전히 멈출 생각이 없어 보입니다. 그는 작업에 전념하기 위해 성에서 외딴 곳으로 이사를 왔고, 누구도 그의 일을 방해하지 않게 합니다. 하지만 그의 작업 목적은 실제로 대중을 위한 것입니다. 분명히 이런 젊은이는 자신의 분야에서 떠오르는 신예일 것이며, 그의 기술은 뛰어나고 앞날이 밝습니다. 펜타클 8의 출현은 당사자가 특정 분야의 뛰어난 인재나 전문가이며, 일에서 세부사항을 매우 중요하게 여긴다는 것을 암시합니다. 또한 펜타클 8은 집중해야 큰일을 이룰 수 있다는 것, 끈기가 승리라는 것, 열정과 집념 등의 의미도 담고 있습니다. 때로는 당사자에게 급히 처리해야 할 일이 있거나, 완수해야 할 일이 기다리고 있다는 것을 알려주기도 합니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 9 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 9.jpg" class="card-img-top" alt="펜타클 9" data-bs-toggle="modal" data-bs-target="#modalPentacles9">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 9</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 9 -->
+        <div class="modal fade" id="modalPentacles9" tabindex="-1" aria-labelledby="modalPentaclesLabel9" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel9">펜타클 9</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 9.jpg" alt="펜타클 9 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>매력, 용기, 수확, 규율, 정교함, 자립</p>
+
+                            <h6>정방향</h6>
+                            <p>절약하지만 인색하지 않음, 인정받음, 사업가, 규율, 정교함, 성취, 안목, 감정적 안정</p>
+
+                            <h6>역방향</h6>
+                            <p>신용 없음, 비난받음, 계획 중단, 신뢰 상실로 인한 재산 손실, 품행 불량으로 인한 감정적 위기</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>화려한 옷을 입은 여성이 자신의 정원을 산책하며 이상적인 전원생활을 즐기고 있습니다. 그녀 뒤로 꽃과 풀이 무성하고, 붉은 산에 있는 성은 그녀의 집입니다. 매는 어둡고 거친 상징이지만, 여성의 손에서는 매우 온순해 보입니다. 이는 여성이 자신의 삶을 성공적으로 통제하고 있음을 나타냅니다. 그녀의 내면에는 더 이상 다양한 욕망과 물질에 대한 갈망이 없습니다. 힘의 속성에서 볼 때, 이 카드는 대 아르카나의 '힘' 카드와 매우 유사합니다. 그녀는 무한한 부를 가지고 있지만, 그녀의 우아한 기품과 고귀한 신분은 이와 무관합니다. 점술 시 펜타클 9가 나타나면, 현재의 평화롭고 안정된 삶에 만족해야 함을 상기시킵니다. 행복의 비밀은 내면의 평화에 있으며, 물질적 욕망에 빠지지 말아야 합니다. 또한 펜타클 9는 자기 규율의 의미도 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 10 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 10.jpg" class="card-img-top" alt="펜타클 10" data-bs-toggle="modal" data-bs-target="#modalPentacles10">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 10</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 10 -->
+        <div class="modal fade" id="modalPentacles10" tabindex="-1" aria-labelledby="modalPentaclesLabel10" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabel10">펜타클 10</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 10.jpg" alt="펜타클 10 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>부유함, 관례, 지속성, 가산, 가정 형성, 3대가 함께 사는 가족</p>
+
+                            <h6>정방향</h6>
+                            <p>좋은 가정 환경, 현명한 아내와 효도하는 자녀, 좋은 팀워크, 의식주 해결, 전통적 결혼, 부부 간 상호 존중과 사랑</p>
+
+                            <h6>역방향</h6>
+                            <p>배신, 팀워크에 불화 발생, 손실, 투자와 재정 관리에 주의 필요, 감정적 냉전과 갈등</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>이는 3대가 함께 살며, 즐겁고 평화롭고, 의식주가 해결된 가정입니다. 심지어 작은 개도 즐거운 분위기에 동참한 것 같습니다. 백발의 노인이 애정 어린 손길로 개를 쓰다듬으며 조용히 노년의 평화로운 시간을 즐기고 있고, 아들과 며느리는 조화롭게 일상의 사소한 일들을 이야기하고 있습니다. 그들의 아이는 오른손으로 엄마의 옷자락을 잡고 왼손으로 개를 쓰다듬고 있습니다. 이 세부 사항은 모든 사람이 태어나서 죽을 때까지, 어린 시절부터 노년까지, 인생 최대의 행복은 삶과 죽음 모두를 기쁘게 받아들이는 것임을 암시합니다. 점술 시 펜타클 10이 나타나면 사물의 내재된 발전 법칙을 따르고 양심의 부름에 따라야 함을 암시합니다. 사업 과정에서 이상적인 파트너를 만날 수 있으며, 때로는 복잡한 관계의 단체나 회사에서 자신의 위치를 찾아야 함을 의미하기도 합니다. 감정 문제를 예측할 때, 펜타클 10은 대부분 조화로운 연애나 결혼을 가리키지만, 감정 교류가 상대적으로 부족하거나 잠재적 열정이 부족할 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 시종 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 시종.jpg" class="card-img-top" alt="펜타클 시종" data-bs-toggle="modal" data-bs-target="#modalPentaclesPage">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 시종</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 시종 -->
+        <div class="modal fade" id="modalPentaclesPage" tabindex="-1" aria-labelledby="modalPentaclesLabelPage" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabelPage">펜타클 시종</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 시종.jpg" alt="펜타클 시종 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>효과 발휘, 번영, 실천, 실용성, 신뢰</p>
+
+                            <h6>정방향</h6>
+                            <p>강한 지식욕, 우수한 두뇌, 학자형 인재, 실용적, 조숙함, 지성</p>
+
+                            <h6>역방향</h6>
+                            <p>낭비, 지식 부족, 깊이 없음, 좁은 시야, 넘치는 에너지, 얕은 연인</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>'문제아' 소드 시종과 비교하면, 펜타클 시종은 조숙하고 성숙하며 안정적으로 보입니다. 어릴 때부터 펜타클 시종은 재정 관리에 능숙하고, 천성적으로 영리하며 학습 능력이 뛰어납니다. 그는 리더나 승자가 아닐 수 있지만, 절대적으로 현실적인 인재입니다. 그는 매우 진취적이고 박학다식하며, 특정 분야의 타고난 학자입니다. 펜타클 시종은 삶의 즐거움이 부족하지 않으며, 마음이 선하고 열정적이며 다른 사람을 돕고자 하지만, 약간 실리주의적입니다. 점술 시 펜타클 시종의 출현은 절대적으로 좋은 소식입니다. 당사자에게 수입 면에서 좋은 소식이 올 수 있음을 예고하며, 특정 분야에서 성공할 수 있는지 예측한다면 답은 긍정적입니다. 건강 상태를 예측한다면 매우 좋은 건강 상태를 나타냅니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 기사 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 기사.jpg" class="card-img-top" alt="펜타클 기사" data-bs-toggle="modal" data-bs-target="#modalPentaclesKnight">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클 기사</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 기사 -->
+        <div class="modal fade" id="modalPentaclesKnight" tabindex="-1" aria-labelledby="modalPentaclesLabelKnight" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabelKnight">펜타클 기사</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 기사.jpg" alt="펜타클 기사 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>확고함, 고집, 현실적, 비관적, 신중함</p>
+
+                            <h6>정방향</h6>
+                            <p>유망한 청년, 확고한 목표, 효율성 중시, 조직자, 사업가, 보수적인 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>태만, 산만한 태도, 지나치게 보수적인 사고, 즉흥적, 정체, 고집으로 인한 연인과의 이별 가능성</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>소 아르카나의 네 기사 카드 중에서 펜타클 기사는 상대적으로 보수적입니다. 그는 매우 진지하며, 심지어 약간 고루하기까지 합니다. 그림에서 볼 수 있듯이, 펜타클 기사는 검은 말을 타고 갑옷을 입고 투구를 쓴 전사처럼 보입니다. 하지만 그의 의지를 상징하는 큰 검은 말은 주인의 명령을 받지 못해 제자리에 서 있을 수밖에 없습니다. 사실, 펜타클 기사의 차가운 외모 아래에는 불같이 뜨거운 마음이 숨겨져 있습니다. 한번 폭발하면 그의 로맨틱함과 열정은 컵 기사에 결코 뒤지지 않습니다. 점술 시 펜타클 기사가 나타나면, 당사자가 근면하고 현실적인 사람임을 나타내지만, 때로는 전투의 순간에 주저할 수 있음을 의미합니다. 건강, 대우 등에 관한 소식을 예측할 때, 펜타클 기사는 모두 매우 밝은 전망을 나타냅니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 퀸 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 퀸.jpg" class="card-img-top" alt="펜타클 퀸" data-bs-toggle="modal" data-bs-target="#modalPentaclesQueen">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클의 여왕</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 퀸 -->
+        <div class="modal fade" id="modalPentaclesQueen" tabindex="-1" aria-labelledby="modalPentaclesLabelQueen" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabelQueen">펜타클의 여왕</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 퀸.jpg" alt="펜타클 퀸 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>모성애, 번영, 안정, 양육, 지혜, 관대함, 신뢰성</p>
+
+                            <h6>정방향</h6>
+                            <p>독립적인 여성, 모성애, 포용력, 온화함, 이해심, 풍요로움, 환대, 완벽한 연인</p>
+
+                            <h6>역방향</h6>
+                            <p>허영심, 사치스러운 생활, 나쁜 태도, 냉담한 마음, 신뢰할 수 없음, 감정적 위기</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>펜타클의 여왕은 실용적이고 가정생활의 행복을 매우 중요하게 여기는 어머니입니다. 그녀는 가정의 재정 장관으로, 종종 가족들에게 절약을 강조하며 정기적으로 가족과 함께 야외 활동을 즐깁니다. 펜타클의 여왕은 현명하고 품위 있는 기질을 가지고 있으며, 소 아르카나의 네 가지 여왕 카드의 모든 미덕을 결합합니다. 그녀는 완드 여왕의 권력을 가지고 있지만 남용하지 않으며, 컵 여왕의 섬세한 감정을 가지고 있지만 우울하지 않고, 소드 여왕의 박학다식함을 가지고 있지만 과시하지 않습니다. 그녀는 본질적으로 강한 여성이지만 일상생활에서는 사랑스러운 여성으로, 모든 남성이 꿈꾸는 이상적인 연인이며 모든 아이들의 마음속에 있는 이상적인 어머니입니다. 그녀 주변에서 생활하는 사람들은 봄바람을 맞는 듯하고 달콤한 술을 마시는 듯합니다. 점술에서 펜타클의 여왕이 나타나면 당사자의 모든 소원이 축복받을 것이며 성공이 임박했음을 나타냅니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카드 킹 -->
+        <div class="col-2">
+            <div class="card">
+                <img src="/images/펜타클 킹.jpg" class="card-img-top" alt="펜타클 킹" data-bs-toggle="modal" data-bs-target="#modalPentaclesKing">
+                <div class="card-body">
+                    <h5 class="card-title">펜타클의 왕</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 창 킹 -->
+        <div class="modal fade" id="modalPentaclesKing" tabindex="-1" aria-labelledby="modalPentaclesLabelKing" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPentaclesLabelKing">펜타클의 왕</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/images/펜타클 킹.jpg" alt="펜타클 킹 카드">
+                        <div class="card-description">
+                            <h6>키워드</h6>
+                            <p>경력, 진취성, 지원, 숙련도, 확고함, 신뢰성</p>
+
+                            <h6>정방향</h6>
+                            <p>지위, 성공한 사람, 마케팅 재능, 숙련됨, 성실함, 풍부한 지식, 투자에 적합, 외도 가능성</p>
+
+                            <h6>역방향</h6>
+                            <p>비열함, 경제 감각 부족, 위험한 대인 관계, 삼각관계에 휘말려 문제 발생 주의</p>
+
+                            <h6>카드의 의미</h6>
+                            <p>펜타클의 왕은 성공적인 통치자로, 자신보다는 신하들을 더 많이 고려합니다. 그는 결코 전쟁을 쉽게 선포하지 않으며, 원정이나 전쟁이 필요할 때 매우 이성적으로 분석합니다. '신하들이 동의하는가? 전쟁이 우리나라 국민들에게 재앙을 가져오지 않을까? 이 전쟁에서 승리할 확신이 있는가?' 그는 많은 질문을 나열하고 모든 질문에 긍정적인 답변이 있을 때만 전쟁을 시작합니다. 따라서 펜타클의 왕은 이성적이면서도 이상적인 통치자입니다. 점술에서 펜타클의 왕이 나타나면 당사자가 이성적이고 독립적이며 근면하고 자기 규율이 있음을 암시합니다. 연애 운세를 볼 때 펜타클의 왕의 출현은 당사자가 열정이 부족하거나 감정 표현이 다소 내성적일 수 있음을 나타낼 수 있습니다.</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

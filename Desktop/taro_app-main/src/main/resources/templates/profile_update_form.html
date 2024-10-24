@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+            background: linear-gradient(to bottom, #f4f4f4, #d1c4e9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 30px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .buttons button.edit {
+            background-color: #333;
+            color: white;
+        }
+
+        .buttons button.update {
+            background-color: #333;
+            color: white;
+        }
+
+        .error-message {
+            color: red;
+            display: none; /* 초기에는 숨김 */
+        }
+    </style>
+    <script>
+        function validatePasswords() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const errorMessage = document.getElementById('error-message');
+            const submitButton = document.getElementById('submit-button');
+
+            if (password !== confirmPassword) {
+                errorMessage.style.display = 'block'; // 오류 메시지 표시
+                submitButton.disabled = true; // 버튼 비활성화
+            } else {
+                errorMessage.style.display = 'none'; // 오류 메시지 숨김
+                submitButton.disabled = false; // 버튼 활성화
+            }
+        }
+
+        // 페이지 로드 시 비밀번호 필드 설정
+        window.onload = function() {
+            const userProviderElement = document.getElementById('user-provider');
+            if (userProviderElement) {
+                const userProvider = userProviderElement.textContent.trim(); // 사용자 제공자 값을 가져옴
+
+                if (userProvider === 'KAKAO') {
+                    document.getElementById('password-section').style.display = 'none'; // 비밀번호 입력 필드 숨기기
+                    document.getElementById('confirm-password-section').style.display = 'none'; // 비밀번호 확인 필드 숨기기
+                    document.getElementById('error-message').style.display = 'none'; // 오류 메시지 숨기기
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div>Profile Settings</div>
+    <div>
+        <a href="/main">home</a>
+        <a href="#" th:href="@{/user/logout}" class="logout-btn">Log out</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>프로필 업데이트</h2>
+
+    <!-- 사용자 제공자 정보를 표시하여 확인 -->
+    <p>사용자 제공자: <span id="user-provider" th:text="${user.provider}">UNKNOWN</span></p>
+
+    <form action="/profile/update" method="post" onsubmit="return validatePasswords()">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="hidden" name="id" th:value="${user.id}"/> <!-- 사용자 ID -->
+
+        <div class="mb-3">
+            <label for="nickname" class="form-label">닉네임:</label>
+            <input type="text" id="nickname" name="nickname" class="form-control" th:value="${user.nickname}" required/>
+        </div>
+
+        <!-- 비밀번호 입력 섹션 (일반 로그인 사용자만 보임) -->
+        <div id="password-section" class="mb-3">
+            <label for="password" class="form-label">비밀번호:</label>
+            <input type="password" id="password" name="password" class="form-control" oninput="validatePasswords()"/>
+            <small class="form-text text-muted">비밀번호를 변경하려면 새 비밀번호를 입력하세요.</small>
+        </div>
+
+        <div id="confirm-password-section" class="mb-3">
+            <label for="confirm-password" class="form-label">비밀번호 확인:</label>
+            <input type="password" id="confirm-password" name="confirmPassword" class="form-control" oninput="validatePasswords()"/>
+            <small class="form-text text-muted">새 비밀번호를 다시 입력하세요.</small>
+        </div>
+
+        <div id="error-message" class="error-message">비밀번호가 일치하지 않습니다.</div>
+
+        <div class="buttons">
+            <a href="/profile" style="font-size: 1.1rem; padding: 10px; background-color: #333; color: white; border: none; cursor: pointer; border-radius: 5px; display: inline-block; text-align: center;">
+                돌아가기
+            </a>
+            <button type="submit" id="submit-button" class="update">업데이트</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
